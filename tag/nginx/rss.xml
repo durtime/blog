@@ -12,10 +12,8 @@
         <category>主題</category>
         <category>butterfly</category>
         <category>Docker</category>
-        <category>Aplayer</category>
-        <category>標籤外掛</category>
-        <category>highlight</category>
         <category>nginx</category>
+        <category>ssh</category>
         <item>
             <guid isPermalink="true">https://my.durtime.top/posts/2bee8b90/</guid>
             <title>nginx配置</title>
@@ -256,8 +254,7 @@ nginx 可以作为一个 HTTP 服务器进行网站的发布处理，&lt;br&gt;
 nginx.conf 的目录结构&lt;br&gt;
  nginx.conf 的目录结构&lt;br&gt;
 整个 conf 文件分为 ** 全局块、events 块、http 块、server 块、location 块 **。每个块有每个块的作用域，越外层的块作用域就包含内部块的作用域，如全局块作用域就包含 events 块、http 块、server 块和 location 块&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;              #全局块
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;#全局块&lt;/p&gt;
 &lt;p&gt;event {              #events 块&lt;br&gt;
 …&lt;br&gt;
 }&lt;/p&gt;
@@ -293,10 +290,6 @@ server&amp;#123;         #server块
 再接着是 {…&lt;/rt&gt;&lt;rp&gt;】&lt;/rp&gt;&lt;/ruby&gt; 指令块，整个意思是对于满足这样条件的 /uri/ 适用指令块 {…} 的指令。&lt;/p&gt;
 &lt;p&gt;location 的分类&lt;br&gt;
  location 分为两类，一类为普通 location，一类为正则 location。&lt;/p&gt;
-&lt;p&gt;1 普通 location&lt;br&gt;
- “普通 location” 是以 “ = ” 或 “ ^~ ” 为前缀或者没有任何前缀的 /uri/&lt;br&gt;
-2 正则 location&lt;br&gt;
- “正则 location” 是以 “ ~ ” 或 “ ~* ” 为前缀的 /uri/&lt;/p&gt;
 &lt;p&gt;多个 location 场景下的 location 匹配&lt;br&gt;
  Nginx 的 location 匹配规则是：“正则 location” 让步 “普通 location” 的严格精确匹配结果；但覆盖 “普通 location ” 的最大前缀匹配结果。&lt;/p&gt;
 &lt;p&gt;例子 1 先普通 location，再正则 location 匹配&lt;/p&gt;
@@ -312,37 +305,6 @@ location ~ .html$ {&lt;br&gt;
 allow all;&lt;br&gt;
 }&lt;br&gt;
 }&lt;/p&gt;
-&lt;p&gt;location / {… deny all;} 普通 location 以 “ / ” 开始的 URI 请求（注意任何 HTTP 请求都必然以 “/ ” 开始，所以 “ / ” 的意思是所有的请求都能被匹配上），都拒绝访问； location ~.html$ {allow all;} 正则 location 以 .html 结尾的 URI 请求，都允许访问。&lt;/p&gt;
-&lt;p&gt;测试结果&lt;/p&gt;
-&lt;p&gt;[root@web108 ~]# curl &lt;a href=&#34;http://localhost:9090/&#34;&gt;http://localhost:9090/&lt;/a&gt;&lt;/p&gt;
-&lt;html&gt;
-&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;
-&lt;body bgcolor=”white”&gt;
-&lt;center&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;/center&gt;
-&lt;hr&gt;&lt;center&gt;nginx/1.1.0&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;p&gt;[root@web108 ~]# curl &lt;a href=&#34;http://localhost:9090/index.html&#34;&gt;http://localhost:9090/index.html&lt;/a&gt;&lt;/p&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-&lt;/head&gt;
-&lt;body bgcolor=”white” text=”black”&gt;
-&lt;center&gt;&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;p&gt;[root@web108 ~]# curl &lt;a href=&#34;http://localhost:9090/index_notfound.html&#34;&gt;http://localhost:9090/index_notfound.html&lt;/a&gt;&lt;/p&gt;
-&lt;html&gt;
-&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
-&lt;body bgcolor=”white”&gt;
-&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
-&lt;hr&gt;&lt;center&gt;nginx/1.1.0&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;p&gt;curl &lt;a href=&#34;http://localhost:9090/&#34;&gt;http://localhost:9090/&lt;/a&gt; 的结果是 “403 Forbidden”，说明被匹配到 “ location / {…deny all;} ” 了，原因很简单 HTTP 请求 GET / 被 “严格精确” 匹配到了普通 location / {} ，则会停止搜索正则 location ；&lt;br&gt;
-curl &lt;a href=&#34;http://localhost:9090/index.html&#34;&gt;http://localhost:9090/index.html&lt;/a&gt; 结果是 “Welcome to nginx!”，说明没有被 “ location / {…deny all;} ” 匹配，否则会 403 Forbidden ，但 /index.html 的确也是以 “ / ” 开头的，只不过此时的普通 location / 的匹配结果是 “最大前缀” 匹配，所以 Nginx 会继续搜索正则 location ， location ~ .html$ 表达了以 .html 结尾的都 allow all; 于是接着就访问到了实际存在的 index.html 页面。&lt;br&gt;
-curl &lt;a href=&#34;http://localhost:9090/index_notfound.html&#34;&gt;http://localhost:9090/index_notfound.html&lt;/a&gt; 同样的道理先匹配 location / {} ，但属于 “普通 location 的最大前缀匹配”，于是后面被 “正则 location ” location ~ .html$ {} 覆盖了，最终 allow all ； 但的确目录下不存在 index_notfound.html 页面，于是 404 Not Found 。&lt;br&gt;
-如果此时我们访问 &lt;a href=&#34;http://localhost:9090/index.txt&#34;&gt;http://localhost:9090/index.txt&lt;/a&gt; 会是什么结果呢？显然是 deny all ；因为先匹配上了 location / {…deny all;} 尽管属于 “普通 location ” 的最大前缀匹配结果，继续搜索正则 location ，但是 /index.txt 不是以 .html 结尾的，正则 location 失败，最终采纳普通 location 的最大前缀匹配结果，于是 deny all 了。&lt;/p&gt;
 &lt;p&gt;例子 2 普通 location 的 “隐式” 严格匹配&lt;/p&gt;
 &lt;p&gt;// 在例子 1 的基础上增加精确匹配&lt;br&gt;
  server {&lt;br&gt;
@@ -359,45 +321,9 @@ deny all;&lt;br&gt;
 location ~ .html$ {&lt;br&gt;
 allow all;&lt;br&gt;
 }&lt;br&gt;
-}&lt;br&gt;
-————————————————&lt;/p&gt;
-&lt;p&gt;[root@web108 ~]# curl &lt;a href=&#34;http://localhost:9090/exact/match.html&#34;&gt;http://localhost:9090/exact/match.html&lt;/a&gt;&lt;/p&gt;
-&lt;html&gt;
-&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
-&lt;body bgcolor=”white”&gt;
-&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
-&lt;hr&gt;&lt;center&gt;nginx/1.1.0&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-结果进一步验证了“普通 location ”的“严格精确”匹配会终止对正则 location 的搜索。这里我们小结下“普通 location”与“正则 location ”的匹配规则：先匹配普通 location ，再匹配正则 location ，但是如果普通 location 的匹配结果恰好是“严格精确（ exact match ）”的，则 nginx 不再尝试后面的正则 location ；如果普通 location 的匹配结果是“最大前缀”，则正则 location 的匹配覆盖普通 location 的匹配。也就是前面说的“正则 location 让步普通location 的严格精确匹配结果，但覆盖普通 location 的最大前缀匹配结果”。
-————————————————
-&lt;p&gt;普通 location 的 “显式” 严格匹配和 “ ^~ ” 前缀&lt;br&gt;
-上面我们演示的普通 location 都是不加任何前缀的，其实普通 location 也可以加前缀：“^~” 和 “ = ”。其中 “ ^~” 的意思是 “非正则，不需要继续正则匹配”，也就是通常我们的普通 location ，还会继续搜索正则 location （恰好严格精确匹配除外），但是 nginx 很人性化允许配置人员告诉 nginx 某条普通 location ，无论最大前缀匹配，还是严格精确匹配都终止继续搜索正则 location ；而 “ = ” 则表达的是普通 location 不允许 “最大前缀” 匹配结果，必须严格等于，严格精确匹配。&lt;br&gt;
-————————————————&lt;br&gt;
- 例子 3&lt;/p&gt;
-&lt;p&gt;server &lt;ruby&gt;
-       listen       9090;
-       server_name  localhost;
-          location /exact/match.html {
-           allow all;
-       }
-           location &lt;rp&gt;【&lt;/rp&gt;&lt;rt&gt;~ / {
-           root   html;
-           index  index.html index.htm;
-           deny all;
-       &lt;/rt&gt;&lt;rp&gt;】&lt;/rp&gt;&lt;/ruby&gt;&lt;br&gt;
-location ~ .html$ {&lt;br&gt;
-allow all;&lt;br&gt;
-}&lt;br&gt;
 }&lt;/p&gt;
-&lt;p&gt;测试&lt;/p&gt;
-&lt;p&gt;curl &lt;a href=&#34;http://localhost:9090/&#34;&gt;http://localhost:9090/&lt;/a&gt;	403 Forbidden	403 Forbidden&lt;br&gt;
-curl &lt;a href=&#34;http://localhost:9090/index.html&#34;&gt;http://localhost:9090/index.html&lt;/a&gt;	Welcome to nginx!	403 Forbidden&lt;br&gt;
-curl &lt;a href=&#34;http://localhost:9090/index_notfound.html&#34;&gt;http://localhost:9090/index_notfound.html&lt;/a&gt;	404 Not Found	403 Forbidden&lt;br&gt;
-curl &lt;a href=&#34;http://localhost:9090/exact/match.html&#34;&gt;http://localhost:9090/exact/match.html&lt;/a&gt;	404 Not Found	404 Not Found&lt;br&gt;
-————————————————&lt;br&gt;
- 正则 location 与编辑顺序&lt;br&gt;
- location 的指令与编辑顺序无关，这句话不全对。对于普通 location 指令，匹配规则是：最大前缀匹配（与顺序无关），如果恰好是严格精确匹配结果或者加有前缀 “^~” 或 “ = ”（符号 “ = ” 只能严格匹配，不能前缀匹配），则停止搜索正则 location ；但对于正则 location 的匹配规则是：按编辑顺序逐个匹配（与顺序有关），只要匹配上，就立即停止后面的搜索。&lt;/p&gt;
+&lt;h1 id=&#34;正则-location-与编辑顺序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#正则-location-与编辑顺序&#34;&gt;#&lt;/a&gt; 正则 location 与编辑顺序&lt;/h1&gt;
+&lt;p&gt;location 的指令与编辑顺序无关，这句话不全对。对于普通 location 指令，匹配规则是：最大前缀匹配（与顺序无关），如果恰好是严格精确匹配结果或者加有前缀 “^~” 或 “ = ”（符号 “ = ” 只能严格匹配，不能前缀匹配），则停止搜索正则 location ；但对于正则 location 的匹配规则是：按编辑顺序逐个匹配（与顺序有关），只要匹配上，就立即停止后面的搜索。&lt;/p&gt;
 &lt;p&gt;server &lt;ruby&gt;
        listen       9090;
        server_name  localhost;
@@ -417,17 +343,7 @@ server &lt;ruby&gt;
 location ~ .html$ {&lt;br&gt;
 allow all;&lt;br&gt;
 }&lt;br&gt;
-}&lt;br&gt;
-————————————————&lt;/p&gt;
-&lt;p&gt;curl &lt;a href=&#34;http://localhost:9090/regextest.html&#34;&gt;http://localhost:9090/regextest.html&lt;/a&gt;	404 Not Found	404 Not Found&lt;br&gt;
-curl &lt;a href=&#34;http://localhost:9090/prefix/regextest.html&#34;&gt;http://localhost:9090/prefix/regextest.html&lt;/a&gt;	404 Not Found	403 Forbidden&lt;br&gt;
-Location ~ ^/prefix/.*.html$ {deny all;} 表示正则 location 对于以 /prefix/ 开头，&lt;br&gt;
-.html 结尾的所有 URI 请求，都拒绝访问；   location ~.html&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;;&lt;/mo&gt;&lt;/mrow&gt;&lt;mtext&gt;表示正则&lt;/mtext&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mtext&gt;对于以&lt;/mtext&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mtext&gt;结尾的&lt;/mtext&gt;&lt;mi&gt;U&lt;/mi&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;I&lt;/mi&gt;&lt;mtext&gt;请求，都允许访问。实际上，&lt;/mtext&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mtext&gt;的是 &lt;/mtext&gt;&lt;mover accent=&#34;true&#34;&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mo&gt;˙&lt;/mo&gt;&lt;/mover&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;{allow all;} 
- 表示正则 location 对于以 .html 结尾的 URI 请求，都允许访问。 实际上，
- prefix 的是 ~\.html&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1.1257em;vertical-align:-0.1944em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;ll&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02691em;&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;ll&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;表示正则&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;oc&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;对于以&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;结尾的&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.10903em;&#34;&gt;U&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.00773em;&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.07847em;&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;请求，都允许访问。实际上，&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.10764em;&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的是&lt;/span&gt;&lt;span class=&#34;mspace nobreak&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mord accent&#34;&gt;&lt;span class=&#34;vlist-t&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.9313em;&#34;&gt;&lt;span style=&#34;top:-3em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3.2634em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;accent-body&#34; style=&#34;left:-0.1389em;&#34;&gt;&lt;span class=&#34;mord&#34;&gt;˙&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 的子集。在 “配置 3.1” 下，两个请求都匹配上 location ~.html$ {allow all;} ，&lt;br&gt;
-并且停止后面的搜索，于是都允许访问， 404 Not Found ；在 “配置 3.2” 下， /regextest.html 无法匹配 prefix ，&lt;br&gt;
-于是继续搜索～.html$ ，允许访问，于是 404 Not Found ；然而 /prefix/regextest.html 匹配到 prefix ，&lt;br&gt;
-于是 deny all ， 403 Forbidden 。&lt;/p&gt;
+}&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
