@@ -3,29 +3,16 @@
     <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;demo&#34; category</title>
     <link href="https://my.durtime.top" />
-    <updated>2020-10-28T06:15:34.000Z</updated>
+    <updated>2020-05-12T14:33:11.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
     <category term="主題" />
     <category term="butterfly" />
-    <category term="打賞" />
     <category term="Aplayer" />
     <category term="Docker" />
     <category term="highlight" />
-    <category term="Bar" />
     <category term="標籤外掛" />
-    <category term="demo" />
-    <category term="top_img" />
-    <entry>
-        <id>https://my.durtime.top/posts/c9711c19/</id>
-        <title>當設置 top_img 為 false 時</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/c9711c19/"/>
-        <content type="html">&lt;p&gt;當設置 top_img 為 false 時，不顯示頂部圖&lt;/p&gt;
-</content>
-        <category term="butterfly" />
-        <category term="top_img" />
-        <updated>2020-10-28T06:15:34.000Z</updated>
-    </entry>
+    <category term="nginx" />
     <entry>
         <id>https://my.durtime.top/posts/618aec27/</id>
         <title>Hexo Built-in Tag Plugins (Hexo內置標籤外掛)</title>
@@ -200,15 +187,6 @@ code snippet
 </content>
         <category term="標籤外掛" />
         <updated>2020-05-12T14:33:11.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://my.durtime.top/posts/913b2502/</id>
-        <title>no cover</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/913b2502/"/>
-        <content type="html">&lt;p&gt;This post no cover&lt;/p&gt;
-</content>
-        <category term="demo" />
-        <updated>2020-03-09T19:45:41.000Z</updated>
     </entry>
     <entry>
         <id>https://my.durtime.top/posts/2df239ce/</id>

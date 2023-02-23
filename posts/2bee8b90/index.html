@@ -1,0 +1,830 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>nginx配置 | Durtime</title><meta name="author" content="Durtime"><meta name="copyright" content="Durtime"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="nginx-快速开始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx配置">
+<meta property="og:url" content="https://my.durtime.top/posts/2bee8b90/">
+<meta property="og:site_name" content="Durtime">
+<meta property="og:description" content="nginx-快速开始">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png">
+<meta property="article:published_time" content="2023-02-23T13:28:25.833Z">
+<meta property="article:modified_time" content="2023-02-23T13:32:14.828Z">
+<meta property="article:author" content="Durtime">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="nginx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://my.durtime.top/posts/2bee8b90/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="NdIUXAOVyGnnBhcrip0ksCawbdAzT0hlBZDE9u4jx6k"/><meta name="msvalidate.01" content="567E47D75E8DCF1282B9623AD914701E"/><meta name="baidu-site-verification" content="code-pE5rnuxcfD"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://file.crazywong.com/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://file.crazywong.com/npm/@fancyapps/ui@latest/dist/fancybox.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: Durtime","link":"链接: ","source":"来源: Durtime","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://file.crazywong.com/npm/flickr-justified-gallery@latest/dist/fjGallery.min.js',
+      css: 'https://file.crazywong.com/npm/flickr-justified-gallery@latest/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'nginx配置',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-23 21:32:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="preconnect" href="https://file.crazywong.com"><style type="text/css">.card-announcement .social-button{margin:.6rem 0 0 0;text-align:center}.card-announcement .social-button a{display:block;background-color:var(--btn-bg);color:var(--btn-color);text-align:center;line-height:2.4;margin:4px 0}.card-announcement .social-button a:hover{background-color:var(--btn-hover-color)}</style></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/loading.gif" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-game"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-thumbs-up"></i><span> 示例</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Durtime"><span class="site-name">Durtime</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-game"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-thumbs-up"></i><span> 示例</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">nginx配置<a class="post-edit-link" href="https://github.com/jerryc127/butterfly.js.org/edit/main/source/_posts/nginx配置.md" rel="external nofollow noreferrer" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2023-02-23T13:28:25.833Z" title="发表于 2023-02-23 21:28:25">2023-02-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="nginx配置"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="nginxlocation常见配置指令alias-root-proxy_pass-路径问题"><a class="markdownIt-Anchor" href="#nginxlocation常见配置指令alias-root-proxy_pass-路径问题">#</a> Nginx——location 常见配置指令，alias、root、proxy_pass 路径问题</h1>
+<p>1.【alias】</p>
+<p>别名配置，用于访问文件系统，在匹配到 location 配置的 URL 路径后，指向【alias】配置的路径。如：</p>
+<p>location /test/<br>
+{<br>
+alias /home/sftp/img/;<br>
+}<br>
+location /test/aaa/<br>
+{<br>
+alias /home/sftp/img/;<br>
+}<br>
+location /test/aaa/bbb/<br>
+{<br>
+alias /home/sftp/img/;<br>
+}<br>
+ 即：请求 /test/1.jpg、/test/aaa/1.jpg、/test/aaa/bbb/1.jpg（省略了协议与域名），将会返回文件 /home/sftp/img/1.jpg。</p>
+<p>注意 alias 后面有没有 “/” 要和 location 后面 “/” 保持一致，否则找不到资源文件</p>
+<p>2.【root】</p>
+<p>根路径配置，用于访问文件系统，在匹配到 location 配置的 URL 路径后，指向【root】配置的路径，并把 location 配置路径附加到其后。如：</p>
+<p>location /test/<br>
+{<br>
+root /home/sftp/img/;<br>
+}<br>
+ 即：请求 /test/1.jpg（省略了协议与域名），将会返回文件 /home/sftp/img/test/1.jpg，相较于 alias，使用 root 会把 /test/ 附加到根目录之后。</p>
+<p>3.【proxy_pass】</p>
+<p>反向代理配置，用于代理请求，适用于前后端负载分离或多台机器、服务器负载分离的场景，在匹配到 location 配置的 URL 路径后，转发请求到【proxy_pass】配置的 URL，是否会附加 location 配置路径与【proxy_pass】配置的路径后是否有 &quot;/“有关，有”/&quot; 则不附加，proxy_pass 带 “/” 类似于 alias 如：</p>
+<p>location /test/<br>
+{<br>
+proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a>;<br>
+}<br>
+location /test/aaa/<br>
+{<br>
+proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a>;<br>
+}<br>
+location /test/aaa/bbb/<br>
+{<br>
+proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a>;<br>
+}<br>
+ 在 tomcat 的 webapp/ROOT/ 放一个 1.png 图片</p>
+<p>即：请求 /test/1.jpg、/test/aaa/1.jpg、/test/aaa/bbb/1.jpg（省略了协议与域名），将会被 nginx 转发请求到<a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/1.jpg%EF%BC%88%E6%9C%AA%E9%99%84%E5%8A%A0/test/%E5%92%8C/test%E5%AD%90%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84%EF%BC%89%E3%80%82"> http://127.0.0.1:8080/1.jpg（未附加 /test/ 和 /test 子目录路径）。</a></p>
+<p>proxy_pass 不带 “/” 类似于 root 如：</p>
+<p>location /test<br>
+{<br>
+proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080">http://127.0.0.1:8080</a>;<br>
+}<br>
+location /test/aaa<br>
+{<br>
+proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080">http://127.0.0.1:8080</a>;<br>
+}<br>
+location /test/aaa/bbb<br>
+{<br>
+proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080">http://127.0.0.1:8080</a>;<br>
+}<br>
+ 需要在 tomcat webapp/ROOT/ 创建 aaa/bbb 目录 之后把 1.png 方式 aaa 和 bbb 目录中</p>
+<p>即：请求 /test/1.jpg，/test/aaa/1.jpg，/test/aaa/bbb/1.jpg（省略了协议与域名），将会被 nginx 转发请求到<a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/test/1.jpg,http://127.0.0.1:8080/test/aaa/1.jpg,http://127.0.0.1:8080/test/aaa/bbb/1.jpg%EF%BC%88%E9%99%84%E5%8A%A0/test/%E4%BB%A5%E5%8F%8A%E5%AD%90%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84%EF%BC%89%E3%80%82"> http://127.0.0.1:8080/test/1.jpg,http://127.0.0.1:8080/test/aaa/1.jpg,http://127.0.0.1:8080/test/aaa/bbb/1.jpg（附加 /test/ 以及子目录路径）。</a></p>
+<p>以下特殊 是 proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img">http://127.0.0.1:8080/img</a>;  带 img 目录的情况</p>
+<p>location /test 不能加 “/” 如果加了，那么这个 proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img;%E4%B9%9F%E5%BE%97%E5%8A%A0proxy_pass">http://127.0.0.1:8080/img; 也得加 proxy_pass</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img/">http://127.0.0.1:8080/img/</a>;   否则<a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img1.png"> http://127.0.0.1:8080/img1.png</a><br>
+{<br>
+proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img">http://127.0.0.1:8080/img</a>;    效果一样<br>
+ proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img/">http://127.0.0.1:8080/img/</a>;<br>
+}</p>
+<p>location /test/aaaa<br>
+{<br>
+proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img">http://127.0.0.1:8080/img</a>;   效果一样，和 y 一开始说 proxy_pass 末尾加不加 “/” 行为不一样了<br>
+ proxy_pass <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img/">http://127.0.0.1:8080/img/</a>;<br>
+}<br>
+ 即：请求 /test/1.jpg、/test/aaa/1.jpg（省略了协议与域名），将会被 nginx 转发请求到<a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:8080/img/1.jpg%EF%BC%88%E6%9C%AA%E9%99%84%E5%8A%A0/test/%E5%92%8C%E5%AD%90%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84%EF%BC%89%E3%80%82"> http://127.0.0.1:8080/img/1.jpg（未附加 /test/ 和子目录路径）。</a></p>
+<p>匹配规则：</p>
+<p>location 语法</p>
+<p …="">location [=|<sub>|</sub>*|^~] /uri/</p>
+<p>= 开头表示精确匹配  此时和 location 中的 root 没关系了。至于 location 外面的 root 才能影响 = 的配置路径</p>
+<dl>
+<dt>^~ 开头表示 uri 以某个常规字符串开头，理解为匹配 url 路径即可。nginx 不对 url 做编码，因此请求为 /static/20%/aa，可以被规则 ^~ /static//aa 匹配到（注意是空格）。</dt>
+<dd>开头表示区分大小写的正则匹配</dd>
+</dl>
+<p>~* 开头表示不区分大小写的正则匹配</p>
+<p>!<sub> 和！</sub>* 分别为区分大小写不匹配及不区分大小写不匹配 的正则</p>
+<p>/ 通用匹配，任何请求都会匹配到。</p>
+<p>第一：一般匹配和精准匹配</p>
+<p>1、精准匹配和一般匹配，uri 后面不带 “/” 匹配</p>
+<p>如图：</p>
+<p>请求 URL：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://192.168.60.106/zg/">http://192.168.60.106/zg/</a>  访问时匹配的是：/zg</p>
+<p>2、精准匹配和一般匹配，uri 前面和后面都不带 “/”</p>
+<p>如图：</p>
+<p>请求 URL：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://192.168.60.106/zg/">http://192.168.60.106/zg/</a> 访问时匹配的是：= zg</p>
+<p>3、精准匹配和一般匹配，uri 带 &quot;/“和不带”/&quot; 匹配</p>
+<p>如图：</p>
+<p>请求 URL：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://192.168.60.106/zg/">http://192.168.60.106/zg/</a> 访问时匹配的是：/zg/ 顺序换也是一样</p>
+<p>综上所述：路径相同时的精准匹配优先，必须是满足 /uri/ 或者 uri，要么 uri 两边都加 /，要么 uri 两边都不加斜杆的情况</p>
+<p>4、精准匹配 就是访问路径和 location 后面的完全一样 包括（前后的 &quot;/&quot;）</p>
+<p>server {<br>
+listen       80;<br>
+server_name  localhost;<br>
+root /opt/wubo; 起作用 全局</p>
+<pre><code>     index 1.html; 起作用    全局
+    location = /jetto &#123;  
+
+            root和alias此时不起作用；
+
+            index index.html;也不起作用;
+    &#125;
+</code></pre>
+<p>正则</p>
+<pre><code>    location ~ /jetto/.*/\.html &#123;  
+
+            root和alias此时不起作用；
+
+            index index.html;也不起作用;
+    &#125;
+</code></pre>
+<p>正则</p>
+<pre><code>location  ~ /wubo/(.*\.mp4) &#123;
+
+        root和alias此时起作用；
+
+        alias video/mp4/$1;
+        #echo_sleep 4;
+        #echo &quot;2222&quot;;
+        #alias video/mp4;
+        #mp4;
+        #index wubo.mp4;
+    &#125;
+</code></pre>
+<p>正则</p>
+<pre><code>  location ~ /jetto &#123;  
+
+            root和alias此时起作用；
+
+            index index.html;也起作用;
+    &#125;
+</code></pre>
+<p>}</p>
+<p>访问路径：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/jetto    本地真实路径：/opt/wubo/jetto  如果没有上面红色部分默认是 /opt/wubo/html/jetto</p>
+<p>5、通用匹配 以最长 uri 匹配优先</p>
+<p>server {<br>
+listen       80;<br>
+server_name  localhost;<br>
+root /opt/wubo; 起作用 全局</p>
+<pre><code>     index 1.html; 起作用    全局
+    location  /jetto &#123;  
+
+        #root alias index起作用，此时root alias的路径想对与全局的相对路径;index 会覆盖全局 index 的默认值
+        #root  /opt/wubo/html;  # 本地真实路径/opt/wubo/html/jetto
+        #root  html;           #本地真实路径/opt/wubo/html/jetto
+        #root  /opt/wubo/jettopro;   #本地真实路径/opt/wubo/jettopro/jetto
+        #root   jettopro;            #本地真实路径/opt/wubo/jettopro/jetto
+        #alias  /opt/wubo/jettoapi;   #本地真实路径/opt/wubo/jettoapi
+        alias   jettoapi;            #本地真实路径/opt/wubo/jettoapi 
+        index index.html jwplayer.html; 
+    &#125;
+</code></pre>
+<p>}</p>
+<p>访问路径：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/jetto    本地真实路径：/opt/wubo/jetto/1.html  如果没有上面红色部分默认是 /opt/wubo/html/jetto/index.html</p>
+<p>第二：^~ 开头的非正则匹配和一般匹配</p>
+<p>^~ 代表非正则匹配，非正则，不需要继续正则匹配。</p>
+<p>^~</p>
+<p><sup>~: 如果这个匹配使用</sup>〜前缀，搜索停止。这个前缀官网和网上都说得很含糊，加上这个前缀，是会停止搜索正则匹配，但是对一般匹配是不会停止的，也就是说还是可以匹配到一般匹配的。</p>
+<p>请求 url： <a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/images/aa/test.jpg，匹配结果：/images/aa/</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/api/                                     匹配结果：/jettoapi/index.html</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/api/wubo                                     匹配结果：/jettoapi/index.html</p>
+<p>意思就是说 ^~ 的作用对一般匹配不会停止，对正则匹配会停止正则匹配是： ~</p>
+<dl>
+<dt>7、^~ 开头的非正则匹配和正则匹配</dt>
+<dd>开头表示区分大小写的正则匹配</dd>
+</dl>
+<p>如图：</p>
+<p>请求 url： <a target="_blank" rel="noopener external nofollow noreferrer" href="http://192.168.60.106/images/aa/test.jpg%EF%BC%8C%E5%8C%B9%E9%85%8D%E7%BB%93%E6%9E%9C%EF%BC%9A%5E~/images/">http://192.168.60.106/images/aa/test.jpg，匹配结果：^~/images/</a></p>
+<p>location /api {<br>
+alias   jettoapi;            #/opt/wubo/jettoapi<br>
+index 1.html;<br>
+}</p>
+<p>访问路径：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/api/wubo   本地路径：/opt/wubo/jettoapi/wubo/1.html</p>
+<p>location /api/wubo {<br>
+alias   jettoapi;            #/opt/wubo/jettoapi<br>
+index 1.html;<br>
+}</p>
+<p>访问路径：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/api/wubo   本地路径：/opt/wubo/jettoapi/1.html</p>
+<p>访问路径和 location 中的路径完全匹配的话 就不需要在本地真实路径下有对应的访问路径，如果 location 的路径只是访问路径中一部分，则需要在本地路径有对应访问中的路径</p>
+<p>8、严格精准匹配和正则匹配</p>
+<p>如图：</p>
+<p>严格精准匹配，如果被严格精准匹配到了，则不会继续搜索正则匹配</p>
+<p>如果<a target="_blank" rel="noopener external nofollow noreferrer" href="http://192.168.60.106"> http://192.168.60.106</a>, 这个就严格精准匹配到了 /, 则不会继续匹配～.html$</p>
+<p>如果：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://192.168.60.106/index.html%EF%BC%8C%E5%88%99%E4%BC%9A%E8%A2%AB/">http://192.168.60.106/index.html，则会被 /</a> 匹配到，但不是严格精准匹配，则会继续搜索正则匹配</p>
+<p>9、正则匹配规则</p>
+<p>都是正则 uri 的情况下，匹配是按照编辑顺序的</p>
+<p>如图</p>
+<p>请求 URL：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://192.168.60.106/prefix/index.html%EF%BC%8C%E4%BC%9A%E4%BC%98%E5%85%88%E5%8C%B9%E9%85%8D%E5%89%8D%E9%9D%A2%E5%AE%9A%E4%B9%89%E7%9A%84location%E3%80%82">http://192.168.60.106/prefix/index.html，会优先匹配前面定义的 location。</a></p>
+<p>10、@开头的 uri</p>
+<p>如图：</p>
+<p>@开头的，如果请求的 URI 存在，则本 nginx 返回对应的页面；如果不存在，<a target="_blank" rel="noopener external nofollow noreferrer" href="http://xn--baidu-ck2hx5qkfy26l4ku3qtkv9d.com">则把请求代理到 baidu.com</a> 上去做个弥补，其实就是做了一个容错，把找不到的 url 全部转发到 fallback 的反向代理服务器去。</p>
+<p>最后总结：</p>
+<ol>
+<li>
+<p>先判断精准命中，如果命中，立即返回结果并结束解析过程</p>
+</li>
+<li>
+<p>判断普通命中，如果有多个命中，记录下来最长的命中结果</p>
+</li>
+</ol>
+<p>3、如果是 ^~ 开头的命中，则不会继续搜索正则命中，但是会继续搜索一般命中</p>
+<ol start="4">
+<li>继续判断正则表达式的解析结果，按配置里的正则表达式顺序为准，由上到下开始匹配，一旦匹配成功立刻返回结果，并结束解析过程。</li>
+</ol>
+<p>延伸分析：a. 普通命中：顺序无所谓，是因为按命中长短来确定的   b. 正则命中：顺序有所谓，因为是从前往后命中的</p>
+<p>注意：当和正则一起使用寻找目录的时候，以下一定是配套的使用。A 相当于定义局部资源目录，B 相当于在 A 定义好的资源目录里面寻找资源</p>
+<p>C 是在全局定义一个资源目录</p>
+<p>A： location /wubo {<br>
+alias   video/mp4;           #/opt/wubo/video/mp4<br>
+}<br>
+B：  location  ~ /wubo/.mp4$ {<br>
+mp4;<br>
+#limit_conn addr 20;<br>
+#limit_rate 2000k;<br>
+}</p>
+<p>访问：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/wubo/wubo.mp4</p>
+<p>server： root  /opt/wubo/video/mp4;</p>
+<p>C：location  ~ .mp4$ {<br>
+mp4;<br>
+#limit_conn addr 20;<br>
+#limit_rate 2000k;<br>
+}</p>
+<p>访问：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://ip">http://ip</a>:port/wubo.mp4</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/shangrila_kun/article/details/89643964">https://blog.csdn.net/shangrila_kun/article/details/89643964</a></p>
+<p>Nginx 是什么</p>
+<p>Nginx（发音同 engine x）是一个异步框架的 Web 服务器，也可以用作反向代理，负载平衡器 和 HTTP 缓存。<br>
+也有人这么解释<br>
+ nginx 是一款自由的、开源的、高性能的 HTTP 服务器和反向代理服务器；<br>
+同时也是一个 IMAP、POP3、SMTP 代理服务器；<br>
+nginx 可以作为一个 HTTP 服务器进行网站的发布处理，<br>
+另外 nginx 可以作为反向代理进行负载均衡的实现。<br>
+nginx.conf 的目录结构<br>
+ nginx.conf 的目录结构<br>
+整个 conf 文件分为 ** 全局块、events 块、http 块、server 块、location 块 **。每个块有每个块的作用域，越外层的块作用域就包含内部块的作用域，如全局块作用域就包含 events 块、http 块、server 块和 location 块</p>
+<pre><code>              #全局块
+</code></pre>
+<p>event {              #events 块<br>
+…<br>
+}</p>
+<p>http {               #http 块</p>
+<pre><code>server&#123;         #server块
+    ...         #server全局块
+
+    location&#123;   #location块
+        ...
+    &#125;
+
+    location&#123;   #location块
+        ...
+    &#125;
+&#125;
+
+server&#123;         #server块
+    ...
+&#125;
+...             #http全局块
+</code></pre>
+<p>}</p>
+<p>http 块<br>
+ http 块是 Nginx 服务器配置中的重要部分，代理、缓存和日志定义等绝大多数的功能和第三方模块的配置都可以放在这模块中。作用包括：文件引入、MIME-Type 定义、日志自定义、是否使用 sendfile 传输文件、连接超时时间、单连接请求数上限等。</p>
+<p>server 块<br>
+ server 块，虚拟主机（虚拟服务器）。作用：使得 Nginx 服务器可以在同一台服务器上至运行一组 Nginx 进程，就可以运行多个网站。</p>
+<p>location 块<br>
+ location 块是 server 块的一个指令。作用：基于 Nginx 服务器接收到的请求字符串，虚拟主机名称（ip，域名）、url 匹配，对特定请求进行处理。</p>
+<p>location 说明<br>
+ location 语法<br>
+ location [=|<sub>|</sub>*|^~|@] /uri/ <ruby> … } ，意思是可以以 “=” 或 “ ~* ” 或 “ ~ ” 或 “ <rp>【</rp><rt>~ ” 或 “@” 符号为前缀，
+当然也可以没有前缀（因为 [A] 是表示可选的 A ； A|B 表示 A 和 B 选一个），紧接着是 /uri/ ，
+再接着是 {…</rt><rp>】</rp></ruby> 指令块，整个意思是对于满足这样条件的 /uri/ 适用指令块 {…} 的指令。</p>
+<p>location 的分类<br>
+ location 分为两类，一类为普通 location，一类为正则 location。</p>
+<p>1 普通 location<br>
+ “普通 location” 是以 “ = ” 或 “ ^~ ” 为前缀或者没有任何前缀的 /uri/<br>
+2 正则 location<br>
+ “正则 location” 是以 “ ~ ” 或 “ ~* ” 为前缀的 /uri/</p>
+<p>多个 location 场景下的 location 匹配<br>
+ Nginx 的 location 匹配规则是：“正则 location” 让步 “普通 location” 的严格精确匹配结果；但覆盖 “普通 location ” 的最大前缀匹配结果。</p>
+<p>例子 1 先普通 location，再正则 location 匹配</p>
+<p>server {<br>
+listen       9090;<br>
+server_name  localhost;<br>
+location / {<br>
+root   html;<br>
+index  index.html index.htm;<br>
+deny all;<br>
+}<br>
+location ~ .html$ {<br>
+allow all;<br>
+}<br>
+}</p>
+<p>location / {… deny all;} 普通 location 以 “ / ” 开始的 URI 请求（注意任何 HTTP 请求都必然以 “/ ” 开始，所以 “ / ” 的意思是所有的请求都能被匹配上），都拒绝访问； location ~.html$ {allow all;} 正则 location 以 .html 结尾的 URI 请求，都允许访问。</p>
+<p>测试结果</p>
+<p>[root@web108 ~]# curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/">http://localhost:9090/</a></p>
+<html>
+<head><title>403 Forbidden</title></head>
+<body bgcolor=”white”>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.1.0</center>
+</body>
+</html>
+<p>[root@web108 ~]# curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/index.html">http://localhost:9090/index.html</a></p>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+</head>
+<body bgcolor=”white” text=”black”>
+<center><h1>Welcome to nginx!</h1></center>
+</body>
+</html>
+<p>[root@web108 ~]# curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/index_notfound.html">http://localhost:9090/index_notfound.html</a></p>
+<html>
+<head><title>404 Not Found</title></head>
+<body bgcolor=”white”>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx/1.1.0</center>
+</body>
+</html>
+<p>curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/">http://localhost:9090/</a> 的结果是 “403 Forbidden”，说明被匹配到 “ location / {…deny all;} ” 了，原因很简单 HTTP 请求 GET / 被 “严格精确” 匹配到了普通 location / {} ，则会停止搜索正则 location ；<br>
+curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/index.html">http://localhost:9090/index.html</a> 结果是 “Welcome to nginx!”，说明没有被 “ location / {…deny all;} ” 匹配，否则会 403 Forbidden ，但 /index.html 的确也是以 “ / ” 开头的，只不过此时的普通 location / 的匹配结果是 “最大前缀” 匹配，所以 Nginx 会继续搜索正则 location ， location ~ .html$ 表达了以 .html 结尾的都 allow all; 于是接着就访问到了实际存在的 index.html 页面。<br>
+curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/index_notfound.html">http://localhost:9090/index_notfound.html</a> 同样的道理先匹配 location / {} ，但属于 “普通 location 的最大前缀匹配”，于是后面被 “正则 location ” location ~ .html$ {} 覆盖了，最终 allow all ； 但的确目录下不存在 index_notfound.html 页面，于是 404 Not Found 。<br>
+如果此时我们访问 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/index.txt">http://localhost:9090/index.txt</a> 会是什么结果呢？显然是 deny all ；因为先匹配上了 location / {…deny all;} 尽管属于 “普通 location ” 的最大前缀匹配结果，继续搜索正则 location ，但是 /index.txt 不是以 .html 结尾的，正则 location 失败，最终采纳普通 location 的最大前缀匹配结果，于是 deny all 了。</p>
+<p>例子 2 普通 location 的 “隐式” 严格匹配</p>
+<p>// 在例子 1 的基础上增加精确匹配<br>
+ server {<br>
+listen       9090;<br>
+server_name  localhost;<br>
+location /exact/match.html {<br>
+allow all;<br>
+}<br>
+location / {<br>
+root   html;<br>
+index  index.html index.htm;<br>
+deny all;<br>
+}<br>
+location ~ .html$ {<br>
+allow all;<br>
+}<br>
+}<br>
+————————————————</p>
+<p>[root@web108 ~]# curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/exact/match.html">http://localhost:9090/exact/match.html</a></p>
+<html>
+<head><title>404 Not Found</title></head>
+<body bgcolor=”white”>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx/1.1.0</center>
+</body>
+</html>
+结果进一步验证了“普通 location ”的“严格精确”匹配会终止对正则 location 的搜索。这里我们小结下“普通 location”与“正则 location ”的匹配规则：先匹配普通 location ，再匹配正则 location ，但是如果普通 location 的匹配结果恰好是“严格精确（ exact match ）”的，则 nginx 不再尝试后面的正则 location ；如果普通 location 的匹配结果是“最大前缀”，则正则 location 的匹配覆盖普通 location 的匹配。也就是前面说的“正则 location 让步普通location 的严格精确匹配结果，但覆盖普通 location 的最大前缀匹配结果”。
+————————————————
+<p>普通 location 的 “显式” 严格匹配和 “ ^~ ” 前缀<br>
+上面我们演示的普通 location 都是不加任何前缀的，其实普通 location 也可以加前缀：“^~” 和 “ = ”。其中 “ ^~” 的意思是 “非正则，不需要继续正则匹配”，也就是通常我们的普通 location ，还会继续搜索正则 location （恰好严格精确匹配除外），但是 nginx 很人性化允许配置人员告诉 nginx 某条普通 location ，无论最大前缀匹配，还是严格精确匹配都终止继续搜索正则 location ；而 “ = ” 则表达的是普通 location 不允许 “最大前缀” 匹配结果，必须严格等于，严格精确匹配。<br>
+————————————————<br>
+ 例子 3</p>
+<p>server <ruby>
+       listen       9090;
+       server_name  localhost;
+          location /exact/match.html {
+           allow all;
+       }
+           location <rp>【</rp><rt>~ / {
+           root   html;
+           index  index.html index.htm;
+           deny all;
+       </rt><rp>】</rp></ruby><br>
+location ~ .html$ {<br>
+allow all;<br>
+}<br>
+}</p>
+<p>测试</p>
+<p>curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/">http://localhost:9090/</a>	403 Forbidden	403 Forbidden<br>
+curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/index.html">http://localhost:9090/index.html</a>	Welcome to nginx!	403 Forbidden<br>
+curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/index_notfound.html">http://localhost:9090/index_notfound.html</a>	404 Not Found	403 Forbidden<br>
+curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/exact/match.html">http://localhost:9090/exact/match.html</a>	404 Not Found	404 Not Found<br>
+————————————————<br>
+ 正则 location 与编辑顺序<br>
+ location 的指令与编辑顺序无关，这句话不全对。对于普通 location 指令，匹配规则是：最大前缀匹配（与顺序无关），如果恰好是严格精确匹配结果或者加有前缀 “^~” 或 “ = ”（符号 “ = ” 只能严格匹配，不能前缀匹配），则停止搜索正则 location ；但对于正则 location 的匹配规则是：按编辑顺序逐个匹配（与顺序有关），只要匹配上，就立即停止后面的搜索。</p>
+<p>server <ruby>
+       listen       9090;
+       server_name  localhost;
+       location ~ \.html$ {
+           allow all; 
+       }  
+       location ~ <rp>【</rp><rt>/prefix/.*\.html$ {
+           deny all;  
+       </rt><rp>】</rp></ruby><br>
+}<br>
+server <ruby>
+       listen       9090;
+       server_name  localhost;
+       location ~ <rp>【</rp><rt>/prefix/.*\.html$ {
+           deny all;  
+       </rt><rp>】</rp></ruby><br>
+location ~ .html$ {<br>
+allow all;<br>
+}<br>
+}<br>
+————————————————</p>
+<p>curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/regextest.html">http://localhost:9090/regextest.html</a>	404 Not Found	404 Not Found<br>
+curl <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:9090/prefix/regextest.html">http://localhost:9090/prefix/regextest.html</a>	404 Not Found	403 Forbidden<br>
+Location ~ ^/prefix/.*.html$ {deny all;} 表示正则 location 对于以 /prefix/ 开头，<br>
+.html 结尾的所有 URI 请求，都拒绝访问；   location ~.html<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>a</mi><mi>l</mi><mi>l</mi><mi>o</mi><mi>w</mi><mi>a</mi><mi>l</mi><mi>l</mi><mo separator="true">;</mo></mrow><mtext>表示正则</mtext><mi>l</mi><mi>o</mi><mi>c</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mtext>对于以</mtext><mi mathvariant="normal">.</mi><mi>h</mi><mi>t</mi><mi>m</mi><mi>l</mi><mtext>结尾的</mtext><mi>U</mi><mi>R</mi><mi>I</mi><mtext>请求，都允许访问。实际上，</mtext><mi>p</mi><mi>r</mi><mi>e</mi><mi>f</mi><mi>i</mi><mi>x</mi><mtext>的是 </mtext><mover accent="true"><mi>h</mi><mo>˙</mo></mover><mi>t</mi><mi>m</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">{allow all;} 
+ 表示正则 location 对于以 .html 结尾的 URI 请求，都允许访问。 实际上，
+ prefix 的是 ~\.html</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1257em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mpunct">;</span></span><span class="mord cjk_fallback">表示正则</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">oc</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">对于以</span><span class="mord">.</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord cjk_fallback">结尾的</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord cjk_fallback">请求，都允许访问。实际上，</span><span class="mord mathnormal">p</span><span class="mord mathnormal">re</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">i</span><span class="mord mathnormal">x</span><span class="mord cjk_fallback">的是</span><span class="mspace nobreak"> </span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9313em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">h</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1389em;"><span class="mord">˙</span></span></span></span></span></span></span><span class="mord mathnormal">t</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span> 的子集。在 “配置 3.1” 下，两个请求都匹配上 location ~.html$ {allow all;} ，<br>
+并且停止后面的搜索，于是都允许访问， 404 Not Found ；在 “配置 3.2” 下， /regextest.html 无法匹配 prefix ，<br>
+于是继续搜索～.html$ ，允许访问，于是 404 Not Found ；然而 /prefix/regextest.html 匹配到 prefix ，<br>
+于是 deny all ， 403 Forbidden 。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://my.durtime.top">Durtime</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://my.durtime.top/posts/2bee8b90/">https://my.durtime.top/posts/2bee8b90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://my.durtime.top" target="_blank">Durtime</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/nginx/">nginx</a></div><div class="post_share"><div class="social-share" data-image="https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://file.crazywong.com/npm/butterfly-extsrc@latest/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://file.crazywong.com/npm/butterfly-extsrc@latest/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://file.crazywong.com/gh/jerryc127/CDN/Photo/wechat.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/Photo/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://file.crazywong.com/gh/jerryc127/CDN/Photo/alipay.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/Photo/alipay.jpg" alt="支付寶"/></a><div class="post-qr-code-desc">支付寶</div></li><li class="reward-item"><a href="https://file.crazywong.com/gh/jerryc127/CDN/Photo/alipayhk.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/Photo/alipayhk.jpg" alt="支付寶香港"/></a><div class="post-qr-code-desc">支付寶香港</div></li></ul></div></div><div class="ads-wrap"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-8919908724705274" data-ad-slot="5978969231"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/3bd898ff/" title="Butterfly添加全局吸底Aplayer教程"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/Butterfly-add-aplayer-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Butterfly添加全局吸底Aplayer教程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/8e33c3e1/" title="Butterfly 安裝文檔(一) 快速開始"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/butterfly-docs-01-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-28</div><div class="title">Butterfly 安裝文檔(一) 快速開始</div></div></a></div><div><a href="/posts/36a80a35/" title="Butterfly 安裝文檔(三) 主題配置-1"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/butterfly-docs-03-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-28</div><div class="title">Butterfly 安裝文檔(三) 主題配置-1</div></div></a></div><div><a href="/posts/956161ca/" title="Butterfly 安裝文檔(二) 主題頁面"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/Butterfly-docs-02-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-28</div><div class="title">Butterfly 安裝文檔(二) 主題頁面</div></div></a></div><div><a href="/posts/fb61d885/" title="Butterfly 安裝文檔(七) 更新日誌"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/Butterfly-docs-07-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-28</div><div class="title">Butterfly 安裝文檔(七) 更新日誌</div></div></a></div><div><a href="/posts/fa343cdc/" title="Butterfly 安裝文檔(五) 主題問答"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/butterfly-doc-05-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-28</div><div class="title">Butterfly 安裝文檔(五) 主題問答</div></div></a></div><div><a href="/posts/4073eda/" title="Butterfly 安裝文檔(六) 進階教程"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/butterfly-docs-06-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-28</div><div class="title">Butterfly 安裝文檔(六) 進階教程</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Waline</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/loading.gif" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Durtime</div><div class="author-info__description">The aroma of black tea no longer exists</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://gitee.com/durtime"><i class="fab fa-gitee"></i><span>Gitee</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:my@crazywong.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="card-widget card-docs card-categories"><div class="item-headline"><i class="fas fa-car-side"></i><span>文檔目錄</span></div><div class="item-content"><ul class=card-category-list> <li class=card-category-list-item><a class=card-category-list-link href=/posts/21cfbf15/ >🚀 快速開始</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/dc584b87/ >📑 主題頁面</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/4aa8abbe/ >🛠 主題配置-1</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/ceeb73f/ >⚔️ 主題配置-2</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/98d20436/ >❓ 主題問答</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/4073eda/ >⚡️ 進階教程</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/198a4240/ >✨ 更新日誌</a></li> </ul></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nginxlocation%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E6%8C%87%E4%BB%A4alias-root-proxy_pass-%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text"> Nginx——location 常见配置指令，alias、root、proxy_pass 路径问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">403 Forbidden</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">Welcome to nginx!</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">404 Not Found</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">404 Not Found</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2bee8b90/" title="nginx配置"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nginx配置"/></a><div class="content"><a class="title" href="/posts/2bee8b90/" title="nginx配置">nginx配置</a><time datetime="2023-02-23T13:28:25.833Z" title="发表于 2023-02-23 21:28:25">2023-02-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3bd898ff/" title="Butterfly添加全局吸底Aplayer教程"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/Butterfly-add-aplayer-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Butterfly添加全局吸底Aplayer教程"/></a><div class="content"><a class="title" href="/posts/3bd898ff/" title="Butterfly添加全局吸底Aplayer教程">Butterfly添加全局吸底Aplayer教程</a><time datetime="2020-07-31T11:02:28.000Z" title="发表于 2020-07-31 19:02:28">2020-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fb61d885/" title="Butterfly 安裝文檔(七) 更新日誌"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/Butterfly-docs-07-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Butterfly 安裝文檔(七) 更新日誌"/></a><div class="content"><a class="title" href="/posts/fb61d885/" title="Butterfly 安裝文檔(七) 更新日誌">Butterfly 安裝文檔(七) 更新日誌</a><time datetime="2020-05-28T14:41:59.000Z" title="发表于 2020-05-28 22:41:59">2020-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4073eda/" title="Butterfly 安裝文檔(六) 進階教程"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/butterfly-docs-06-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Butterfly 安裝文檔(六) 進階教程"/></a><div class="content"><a class="title" href="/posts/4073eda/" title="Butterfly 安裝文檔(六) 進階教程">Butterfly 安裝文檔(六) 進階教程</a><time datetime="2020-05-28T14:39:25.000Z" title="发表于 2020-05-28 22:39:25">2020-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fa343cdc/" title="Butterfly 安裝文檔(五) 主題問答"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/butterfly-doc-05-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Butterfly 安裝文檔(五) 主題問答"/></a><div class="content"><a class="title" href="/posts/fa343cdc/" title="Butterfly 安裝文檔(五) 主題問答">Butterfly 安裝文檔(五) 主題問答</a><time datetime="2020-05-28T14:38:21.000Z" title="发表于 2020-05-28 22:38:21">2020-05-28</time></div></div></div></div><div class="card-widget ads-wrap"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8919908724705274" data-ad-slot="8108145410" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div></div></div></main><footer id="footer" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By Durtime</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://file.crazywong.com/npm/hexo-theme-butterfly@latest/source/js/utils.js"></script><script src="https://file.crazywong.com/npm/hexo-theme-butterfly@latest/source/js/main.js"></script><script src="https://file.crazywong.com/npm/hexo-theme-butterfly@latest/source/js/tw_cn.js"></script><script src="https://file.crazywong.com/npm/@fancyapps/ui@latest/dist/fancybox.umd.js"></script><script src="https://file.crazywong.com/npm/instant.page@latest/instantpage.js" type="module"></script><script src="https://file.crazywong.com/npm/vanilla-lazyload@latest/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://file.crazywong.com/npm/mermaid@latest/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://btf-waline.crazywong.com',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, {"placeholder":"請先查看文檔再詢問。主題如有報錯，請試着解決。提問題時請詳細描述遇到的問題，附上相關的報錯 / 截圖 / 網址。","pageSize":8,"lang":"zh-CN","requiredFields":["nick","mail"]}))
+  }
+
+  const walineCSSLoad = document.getElementById('waline-css')
+
+  if (typeof Waline === 'object') {
+    walineCSSLoad ? initWaline() : getCSS('https://file.crazywong.com/npm/@waline/client@latest/dist/waline.css','waline-css').then(initWaline)
+  }
+  else {
+    getCSS('https://file.crazywong.com/npm/@waline/client@latest/dist/waline.css','waline-css').then(() => {
+      getScript('https://file.crazywong.com/npm/@waline/client@latest/dist/waline.js').then(initWaline)
+    })
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://my.durtime.top/posts/2bee8b90/'
+    this.page.identifier = '/posts/2bee8b90/'
+    this.page.title = 'nginx配置'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://demo-jerryc-me.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Waline' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const loadWaline = () => {
+      Waline.RecentComments({
+        serverURL: 'https://btf-waline.crazywong.com',
+        count: 6
+      }).then(({comments}) => {
+        const walineArray = comments.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.insertedAt,
+          }
+        })
+        saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 5/(60*24))
+        generateHtml(walineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      }) 
+    }
+
+    if (typeof Waline === 'object') loadWaline()
+    else getScript('https://file.crazywong.com/npm/@waline/client@latest/dist/waline.js').then(loadWaline)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script defer="defer" id="ribbon" src="https://file.crazywong.com/npm/butterfly-extsrc@latest/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="https://file.crazywong.com/npm/pjax@latest/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/talking/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="https://file.crazywong.com/npm/hexo-theme-butterfly@latest/source/js/search/local-search.js"></script></div></body></html>

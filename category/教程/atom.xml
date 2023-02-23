@@ -3,19 +3,430 @@
     <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;教程&#34; category</title>
     <link href="https://my.durtime.top" />
-    <updated>2020-05-28T14:31:46.000Z</updated>
+    <updated>2023-02-23T13:28:25.833Z</updated>
     <category term="教程" />
     <category term="Hexo" />
     <category term="主題" />
     <category term="butterfly" />
-    <category term="打賞" />
     <category term="Aplayer" />
     <category term="Docker" />
     <category term="highlight" />
-    <category term="Bar" />
     <category term="標籤外掛" />
-    <category term="demo" />
-    <category term="top_img" />
+    <category term="nginx" />
+    <entry>
+        <id>https://my.durtime.top/posts/2bee8b90/</id>
+        <title>nginx配置</title>
+        <link rel="alternate" href="https://my.durtime.top/posts/2bee8b90/"/>
+        <content type="html">&lt;h1 id=&#34;nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;#&lt;/a&gt; Nginx——location 常见配置指令，alias、root、proxy_pass 路径问题&lt;/h1&gt;
+&lt;p&gt;1.【alias】&lt;/p&gt;
+&lt;p&gt;别名配置，用于访问文件系统，在匹配到 location 配置的 URL 路径后，指向【alias】配置的路径。如：&lt;/p&gt;
+&lt;p&gt;location /test/&lt;br&gt;
+{&lt;br&gt;
+alias /home/sftp/img/;&lt;br&gt;
+}&lt;br&gt;
+location /test/aaa/&lt;br&gt;
+{&lt;br&gt;
+alias /home/sftp/img/;&lt;br&gt;
+}&lt;br&gt;
+location /test/aaa/bbb/&lt;br&gt;
+{&lt;br&gt;
+alias /home/sftp/img/;&lt;br&gt;
+}&lt;br&gt;
+ 即：请求 /test/1.jpg、/test/aaa/1.jpg、/test/aaa/bbb/1.jpg（省略了协议与域名），将会返回文件 /home/sftp/img/1.jpg。&lt;/p&gt;
+&lt;p&gt;注意 alias 后面有没有 “/” 要和 location 后面 “/” 保持一致，否则找不到资源文件&lt;/p&gt;
+&lt;p&gt;2.【root】&lt;/p&gt;
+&lt;p&gt;根路径配置，用于访问文件系统，在匹配到 location 配置的 URL 路径后，指向【root】配置的路径，并把 location 配置路径附加到其后。如：&lt;/p&gt;
+&lt;p&gt;location /test/&lt;br&gt;
+{&lt;br&gt;
+root /home/sftp/img/;&lt;br&gt;
+}&lt;br&gt;
+ 即：请求 /test/1.jpg（省略了协议与域名），将会返回文件 /home/sftp/img/test/1.jpg，相较于 alias，使用 root 会把 /test/ 附加到根目录之后。&lt;/p&gt;
+&lt;p&gt;3.【proxy_pass】&lt;/p&gt;
+&lt;p&gt;反向代理配置，用于代理请求，适用于前后端负载分离或多台机器、服务器负载分离的场景，在匹配到 location 配置的 URL 路径后，转发请求到【proxy_pass】配置的 URL，是否会附加 location 配置路径与【proxy_pass】配置的路径后是否有 &amp;quot;/“有关，有”/&amp;quot; 则不附加，proxy_pass 带 “/” 类似于 alias 如：&lt;/p&gt;
+&lt;p&gt;location /test/&lt;br&gt;
+{&lt;br&gt;
+proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/&#34;&gt;http://127.0.0.1:8080/&lt;/a&gt;;&lt;br&gt;
+}&lt;br&gt;
+location /test/aaa/&lt;br&gt;
+{&lt;br&gt;
+proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/&#34;&gt;http://127.0.0.1:8080/&lt;/a&gt;;&lt;br&gt;
+}&lt;br&gt;
+location /test/aaa/bbb/&lt;br&gt;
+{&lt;br&gt;
+proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/&#34;&gt;http://127.0.0.1:8080/&lt;/a&gt;;&lt;br&gt;
+}&lt;br&gt;
+ 在 tomcat 的 webapp/ROOT/ 放一个 1.png 图片&lt;/p&gt;
+&lt;p&gt;即：请求 /test/1.jpg、/test/aaa/1.jpg、/test/aaa/bbb/1.jpg（省略了协议与域名），将会被 nginx 转发请求到&lt;a href=&#34;http://127.0.0.1:8080/1.jpg%EF%BC%88%E6%9C%AA%E9%99%84%E5%8A%A0/test/%E5%92%8C/test%E5%AD%90%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84%EF%BC%89%E3%80%82&#34;&gt; http://127.0.0.1:8080/1.jpg（未附加 /test/ 和 /test 子目录路径）。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;proxy_pass 不带 “/” 类似于 root 如：&lt;/p&gt;
+&lt;p&gt;location /test&lt;br&gt;
+{&lt;br&gt;
+proxy_pass &lt;a href=&#34;http://127.0.0.1:8080&#34;&gt;http://127.0.0.1:8080&lt;/a&gt;;&lt;br&gt;
+}&lt;br&gt;
+location /test/aaa&lt;br&gt;
+{&lt;br&gt;
+proxy_pass &lt;a href=&#34;http://127.0.0.1:8080&#34;&gt;http://127.0.0.1:8080&lt;/a&gt;;&lt;br&gt;
+}&lt;br&gt;
+location /test/aaa/bbb&lt;br&gt;
+{&lt;br&gt;
+proxy_pass &lt;a href=&#34;http://127.0.0.1:8080&#34;&gt;http://127.0.0.1:8080&lt;/a&gt;;&lt;br&gt;
+}&lt;br&gt;
+ 需要在 tomcat webapp/ROOT/ 创建 aaa/bbb 目录 之后把 1.png 方式 aaa 和 bbb 目录中&lt;/p&gt;
+&lt;p&gt;即：请求 /test/1.jpg，/test/aaa/1.jpg，/test/aaa/bbb/1.jpg（省略了协议与域名），将会被 nginx 转发请求到&lt;a href=&#34;http://127.0.0.1:8080/test/1.jpg,http://127.0.0.1:8080/test/aaa/1.jpg,http://127.0.0.1:8080/test/aaa/bbb/1.jpg%EF%BC%88%E9%99%84%E5%8A%A0/test/%E4%BB%A5%E5%8F%8A%E5%AD%90%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84%EF%BC%89%E3%80%82&#34;&gt; http://127.0.0.1:8080/test/1.jpg,http://127.0.0.1:8080/test/aaa/1.jpg,http://127.0.0.1:8080/test/aaa/bbb/1.jpg（附加 /test/ 以及子目录路径）。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下特殊 是 proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/img&#34;&gt;http://127.0.0.1:8080/img&lt;/a&gt;;  带 img 目录的情况&lt;/p&gt;
+&lt;p&gt;location /test 不能加 “/” 如果加了，那么这个 proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/img;%E4%B9%9F%E5%BE%97%E5%8A%A0proxy_pass&#34;&gt;http://127.0.0.1:8080/img; 也得加 proxy_pass&lt;/a&gt; &lt;a href=&#34;http://127.0.0.1:8080/img/&#34;&gt;http://127.0.0.1:8080/img/&lt;/a&gt;;   否则&lt;a href=&#34;http://127.0.0.1:8080/img1.png&#34;&gt; http://127.0.0.1:8080/img1.png&lt;/a&gt;&lt;br&gt;
+{&lt;br&gt;
+proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/img&#34;&gt;http://127.0.0.1:8080/img&lt;/a&gt;;    效果一样&lt;br&gt;
+ proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/img/&#34;&gt;http://127.0.0.1:8080/img/&lt;/a&gt;;&lt;br&gt;
+}&lt;/p&gt;
+&lt;p&gt;location /test/aaaa&lt;br&gt;
+{&lt;br&gt;
+proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/img&#34;&gt;http://127.0.0.1:8080/img&lt;/a&gt;;   效果一样，和 y 一开始说 proxy_pass 末尾加不加 “/” 行为不一样了&lt;br&gt;
+ proxy_pass &lt;a href=&#34;http://127.0.0.1:8080/img/&#34;&gt;http://127.0.0.1:8080/img/&lt;/a&gt;;&lt;br&gt;
+}&lt;br&gt;
+ 即：请求 /test/1.jpg、/test/aaa/1.jpg（省略了协议与域名），将会被 nginx 转发请求到&lt;a href=&#34;http://127.0.0.1:8080/img/1.jpg%EF%BC%88%E6%9C%AA%E9%99%84%E5%8A%A0/test/%E5%92%8C%E5%AD%90%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84%EF%BC%89%E3%80%82&#34;&gt; http://127.0.0.1:8080/img/1.jpg（未附加 /test/ 和子目录路径）。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;匹配规则：&lt;/p&gt;
+&lt;p&gt;location 语法&lt;/p&gt;
+&lt;p …=&#34;&#34;&gt;location [=|&lt;sub&gt;|&lt;/sub&gt;*|^~] /uri/&lt;/p&gt;
+&lt;p&gt;= 开头表示精确匹配  此时和 location 中的 root 没关系了。至于 location 外面的 root 才能影响 = 的配置路径&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;^~ 开头表示 uri 以某个常规字符串开头，理解为匹配 url 路径即可。nginx 不对 url 做编码，因此请求为 /static/20%/aa，可以被规则 ^~ /static//aa 匹配到（注意是空格）。&lt;/dt&gt;
+&lt;dd&gt;开头表示区分大小写的正则匹配&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;~* 开头表示不区分大小写的正则匹配&lt;/p&gt;
+&lt;p&gt;!&lt;sub&gt; 和！&lt;/sub&gt;* 分别为区分大小写不匹配及不区分大小写不匹配 的正则&lt;/p&gt;
+&lt;p&gt;/ 通用匹配，任何请求都会匹配到。&lt;/p&gt;
+&lt;p&gt;第一：一般匹配和精准匹配&lt;/p&gt;
+&lt;p&gt;1、精准匹配和一般匹配，uri 后面不带 “/” 匹配&lt;/p&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;请求 URL：&lt;a href=&#34;http://192.168.60.106/zg/&#34;&gt;http://192.168.60.106/zg/&lt;/a&gt;  访问时匹配的是：/zg&lt;/p&gt;
+&lt;p&gt;2、精准匹配和一般匹配，uri 前面和后面都不带 “/”&lt;/p&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;请求 URL：&lt;a href=&#34;http://192.168.60.106/zg/&#34;&gt;http://192.168.60.106/zg/&lt;/a&gt; 访问时匹配的是：= zg&lt;/p&gt;
+&lt;p&gt;3、精准匹配和一般匹配，uri 带 &amp;quot;/“和不带”/&amp;quot; 匹配&lt;/p&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;请求 URL：&lt;a href=&#34;http://192.168.60.106/zg/&#34;&gt;http://192.168.60.106/zg/&lt;/a&gt; 访问时匹配的是：/zg/ 顺序换也是一样&lt;/p&gt;
+&lt;p&gt;综上所述：路径相同时的精准匹配优先，必须是满足 /uri/ 或者 uri，要么 uri 两边都加 /，要么 uri 两边都不加斜杆的情况&lt;/p&gt;
+&lt;p&gt;4、精准匹配 就是访问路径和 location 后面的完全一样 包括（前后的 &amp;quot;/&amp;quot;）&lt;/p&gt;
+&lt;p&gt;server {&lt;br&gt;
+listen       80;&lt;br&gt;
+server_name  localhost;&lt;br&gt;
+root /opt/wubo; 起作用 全局&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     index 1.html; 起作用    全局
+    location = /jetto &amp;#123;  
+
+            root和alias此时不起作用；
+
+            index index.html;也不起作用;
+    &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正则&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    location ~ /jetto/.*/\.html &amp;#123;  
+
+            root和alias此时不起作用；
+
+            index index.html;也不起作用;
+    &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正则&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;location  ~ /wubo/(.*\.mp4) &amp;#123;
+
+        root和alias此时起作用；
+
+        alias video/mp4/$1;
+        #echo_sleep 4;
+        #echo &amp;quot;2222&amp;quot;;
+        #alias video/mp4;
+        #mp4;
+        #index wubo.mp4;
+    &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正则&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  location ~ /jetto &amp;#123;  
+
+            root和alias此时起作用；
+
+            index index.html;也起作用;
+    &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;访问路径：&lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/jetto    本地真实路径：/opt/wubo/jetto  如果没有上面红色部分默认是 /opt/wubo/html/jetto&lt;/p&gt;
+&lt;p&gt;5、通用匹配 以最长 uri 匹配优先&lt;/p&gt;
+&lt;p&gt;server {&lt;br&gt;
+listen       80;&lt;br&gt;
+server_name  localhost;&lt;br&gt;
+root /opt/wubo; 起作用 全局&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     index 1.html; 起作用    全局
+    location  /jetto &amp;#123;  
+
+        #root alias index起作用，此时root alias的路径想对与全局的相对路径;index 会覆盖全局 index 的默认值
+        #root  /opt/wubo/html;  # 本地真实路径/opt/wubo/html/jetto
+        #root  html;           #本地真实路径/opt/wubo/html/jetto
+        #root  /opt/wubo/jettopro;   #本地真实路径/opt/wubo/jettopro/jetto
+        #root   jettopro;            #本地真实路径/opt/wubo/jettopro/jetto
+        #alias  /opt/wubo/jettoapi;   #本地真实路径/opt/wubo/jettoapi
+        alias   jettoapi;            #本地真实路径/opt/wubo/jettoapi 
+        index index.html jwplayer.html; 
+    &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;访问路径：&lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/jetto    本地真实路径：/opt/wubo/jetto/1.html  如果没有上面红色部分默认是 /opt/wubo/html/jetto/index.html&lt;/p&gt;
+&lt;p&gt;第二：^~ 开头的非正则匹配和一般匹配&lt;/p&gt;
+&lt;p&gt;^~ 代表非正则匹配，非正则，不需要继续正则匹配。&lt;/p&gt;
+&lt;p&gt;^~&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;~: 如果这个匹配使用&lt;/sup&gt;〜前缀，搜索停止。这个前缀官网和网上都说得很含糊，加上这个前缀，是会停止搜索正则匹配，但是对一般匹配是不会停止的，也就是说还是可以匹配到一般匹配的。&lt;/p&gt;
+&lt;p&gt;请求 url： &lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/images/aa/test.jpg，匹配结果：/images/aa/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/api/                                     匹配结果：/jettoapi/index.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/api/wubo                                     匹配结果：/jettoapi/index.html&lt;/p&gt;
+&lt;p&gt;意思就是说 ^~ 的作用对一般匹配不会停止，对正则匹配会停止正则匹配是： ~&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;7、^~ 开头的非正则匹配和正则匹配&lt;/dt&gt;
+&lt;dd&gt;开头表示区分大小写的正则匹配&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;请求 url： &lt;a href=&#34;http://192.168.60.106/images/aa/test.jpg%EF%BC%8C%E5%8C%B9%E9%85%8D%E7%BB%93%E6%9E%9C%EF%BC%9A%5E~/images/&#34;&gt;http://192.168.60.106/images/aa/test.jpg，匹配结果：^~/images/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;location /api {&lt;br&gt;
+alias   jettoapi;            #/opt/wubo/jettoapi&lt;br&gt;
+index 1.html;&lt;br&gt;
+}&lt;/p&gt;
+&lt;p&gt;访问路径：&lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/api/wubo   本地路径：/opt/wubo/jettoapi/wubo/1.html&lt;/p&gt;
+&lt;p&gt;location /api/wubo {&lt;br&gt;
+alias   jettoapi;            #/opt/wubo/jettoapi&lt;br&gt;
+index 1.html;&lt;br&gt;
+}&lt;/p&gt;
+&lt;p&gt;访问路径：&lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/api/wubo   本地路径：/opt/wubo/jettoapi/1.html&lt;/p&gt;
+&lt;p&gt;访问路径和 location 中的路径完全匹配的话 就不需要在本地真实路径下有对应的访问路径，如果 location 的路径只是访问路径中一部分，则需要在本地路径有对应访问中的路径&lt;/p&gt;
+&lt;p&gt;8、严格精准匹配和正则匹配&lt;/p&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;严格精准匹配，如果被严格精准匹配到了，则不会继续搜索正则匹配&lt;/p&gt;
+&lt;p&gt;如果&lt;a href=&#34;http://192.168.60.106&#34;&gt; http://192.168.60.106&lt;/a&gt;, 这个就严格精准匹配到了 /, 则不会继续匹配～.html$&lt;/p&gt;
+&lt;p&gt;如果：&lt;a href=&#34;http://192.168.60.106/index.html%EF%BC%8C%E5%88%99%E4%BC%9A%E8%A2%AB/&#34;&gt;http://192.168.60.106/index.html，则会被 /&lt;/a&gt; 匹配到，但不是严格精准匹配，则会继续搜索正则匹配&lt;/p&gt;
+&lt;p&gt;9、正则匹配规则&lt;/p&gt;
+&lt;p&gt;都是正则 uri 的情况下，匹配是按照编辑顺序的&lt;/p&gt;
+&lt;p&gt;如图&lt;/p&gt;
+&lt;p&gt;请求 URL：&lt;a href=&#34;http://192.168.60.106/prefix/index.html%EF%BC%8C%E4%BC%9A%E4%BC%98%E5%85%88%E5%8C%B9%E9%85%8D%E5%89%8D%E9%9D%A2%E5%AE%9A%E4%B9%89%E7%9A%84location%E3%80%82&#34;&gt;http://192.168.60.106/prefix/index.html，会优先匹配前面定义的 location。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;10、@开头的 uri&lt;/p&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;@开头的，如果请求的 URI 存在，则本 nginx 返回对应的页面；如果不存在，&lt;a href=&#34;http://xn--baidu-ck2hx5qkfy26l4ku3qtkv9d.com&#34;&gt;则把请求代理到 baidu.com&lt;/a&gt; 上去做个弥补，其实就是做了一个容错，把找不到的 url 全部转发到 fallback 的反向代理服务器去。&lt;/p&gt;
+&lt;p&gt;最后总结：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;先判断精准命中，如果命中，立即返回结果并结束解析过程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;判断普通命中，如果有多个命中，记录下来最长的命中结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;3、如果是 ^~ 开头的命中，则不会继续搜索正则命中，但是会继续搜索一般命中&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;继续判断正则表达式的解析结果，按配置里的正则表达式顺序为准，由上到下开始匹配，一旦匹配成功立刻返回结果，并结束解析过程。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;延伸分析：a. 普通命中：顺序无所谓，是因为按命中长短来确定的   b. 正则命中：顺序有所谓，因为是从前往后命中的&lt;/p&gt;
+&lt;p&gt;注意：当和正则一起使用寻找目录的时候，以下一定是配套的使用。A 相当于定义局部资源目录，B 相当于在 A 定义好的资源目录里面寻找资源&lt;/p&gt;
+&lt;p&gt;C 是在全局定义一个资源目录&lt;/p&gt;
+&lt;p&gt;A： location /wubo {&lt;br&gt;
+alias   video/mp4;           #/opt/wubo/video/mp4&lt;br&gt;
+}&lt;br&gt;
+B：  location  ~ /wubo/.mp4$ {&lt;br&gt;
+mp4;&lt;br&gt;
+#limit_conn addr 20;&lt;br&gt;
+#limit_rate 2000k;&lt;br&gt;
+}&lt;/p&gt;
+&lt;p&gt;访问：&lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/wubo/wubo.mp4&lt;/p&gt;
+&lt;p&gt;server： root  /opt/wubo/video/mp4;&lt;/p&gt;
+&lt;p&gt;C：location  ~ .mp4$ {&lt;br&gt;
+mp4;&lt;br&gt;
+#limit_conn addr 20;&lt;br&gt;
+#limit_rate 2000k;&lt;br&gt;
+}&lt;/p&gt;
+&lt;p&gt;访问：&lt;a href=&#34;http://ip&#34;&gt;http://ip&lt;/a&gt;:port/wubo.mp4&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/shangrila_kun/article/details/89643964&#34;&gt;https://blog.csdn.net/shangrila_kun/article/details/89643964&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nginx 是什么&lt;/p&gt;
+&lt;p&gt;Nginx（发音同 engine x）是一个异步框架的 Web 服务器，也可以用作反向代理，负载平衡器 和 HTTP 缓存。&lt;br&gt;
+也有人这么解释&lt;br&gt;
+ nginx 是一款自由的、开源的、高性能的 HTTP 服务器和反向代理服务器；&lt;br&gt;
+同时也是一个 IMAP、POP3、SMTP 代理服务器；&lt;br&gt;
+nginx 可以作为一个 HTTP 服务器进行网站的发布处理，&lt;br&gt;
+另外 nginx 可以作为反向代理进行负载均衡的实现。&lt;br&gt;
+nginx.conf 的目录结构&lt;br&gt;
+ nginx.conf 的目录结构&lt;br&gt;
+整个 conf 文件分为 ** 全局块、events 块、http 块、server 块、location 块 **。每个块有每个块的作用域，越外层的块作用域就包含内部块的作用域，如全局块作用域就包含 events 块、http 块、server 块和 location 块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;              #全局块
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;event {              #events 块&lt;br&gt;
+…&lt;br&gt;
+}&lt;/p&gt;
+&lt;p&gt;http {               #http 块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server&amp;#123;         #server块
+    ...         #server全局块
+
+    location&amp;#123;   #location块
+        ...
+    &amp;#125;
+
+    location&amp;#123;   #location块
+        ...
+    &amp;#125;
+&amp;#125;
+
+server&amp;#123;         #server块
+    ...
+&amp;#125;
+...             #http全局块
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;http 块&lt;br&gt;
+ http 块是 Nginx 服务器配置中的重要部分，代理、缓存和日志定义等绝大多数的功能和第三方模块的配置都可以放在这模块中。作用包括：文件引入、MIME-Type 定义、日志自定义、是否使用 sendfile 传输文件、连接超时时间、单连接请求数上限等。&lt;/p&gt;
+&lt;p&gt;server 块&lt;br&gt;
+ server 块，虚拟主机（虚拟服务器）。作用：使得 Nginx 服务器可以在同一台服务器上至运行一组 Nginx 进程，就可以运行多个网站。&lt;/p&gt;
+&lt;p&gt;location 块&lt;br&gt;
+ location 块是 server 块的一个指令。作用：基于 Nginx 服务器接收到的请求字符串，虚拟主机名称（ip，域名）、url 匹配，对特定请求进行处理。&lt;/p&gt;
+&lt;p&gt;location 说明&lt;br&gt;
+ location 语法&lt;br&gt;
+ location [=|&lt;sub&gt;|&lt;/sub&gt;*|^~|@] /uri/ &lt;ruby&gt; … } ，意思是可以以 “=” 或 “ ~* ” 或 “ ~ ” 或 “ &lt;rp&gt;【&lt;/rp&gt;&lt;rt&gt;~ ” 或 “@” 符号为前缀，
+当然也可以没有前缀（因为 [A] 是表示可选的 A ； A|B 表示 A 和 B 选一个），紧接着是 /uri/ ，
+再接着是 {…&lt;/rt&gt;&lt;rp&gt;】&lt;/rp&gt;&lt;/ruby&gt; 指令块，整个意思是对于满足这样条件的 /uri/ 适用指令块 {…} 的指令。&lt;/p&gt;
+&lt;p&gt;location 的分类&lt;br&gt;
+ location 分为两类，一类为普通 location，一类为正则 location。&lt;/p&gt;
+&lt;p&gt;1 普通 location&lt;br&gt;
+ “普通 location” 是以 “ = ” 或 “ ^~ ” 为前缀或者没有任何前缀的 /uri/&lt;br&gt;
+2 正则 location&lt;br&gt;
+ “正则 location” 是以 “ ~ ” 或 “ ~* ” 为前缀的 /uri/&lt;/p&gt;
+&lt;p&gt;多个 location 场景下的 location 匹配&lt;br&gt;
+ Nginx 的 location 匹配规则是：“正则 location” 让步 “普通 location” 的严格精确匹配结果；但覆盖 “普通 location ” 的最大前缀匹配结果。&lt;/p&gt;
+&lt;p&gt;例子 1 先普通 location，再正则 location 匹配&lt;/p&gt;
+&lt;p&gt;server {&lt;br&gt;
+listen       9090;&lt;br&gt;
+server_name  localhost;&lt;br&gt;
+location / {&lt;br&gt;
+root   html;&lt;br&gt;
+index  index.html index.htm;&lt;br&gt;
+deny all;&lt;br&gt;
+}&lt;br&gt;
+location ~ .html$ {&lt;br&gt;
+allow all;&lt;br&gt;
+}&lt;br&gt;
+}&lt;/p&gt;
+&lt;p&gt;location / {… deny all;} 普通 location 以 “ / ” 开始的 URI 请求（注意任何 HTTP 请求都必然以 “/ ” 开始，所以 “ / ” 的意思是所有的请求都能被匹配上），都拒绝访问； location ~.html$ {allow all;} 正则 location 以 .html 结尾的 URI 请求，都允许访问。&lt;/p&gt;
+&lt;p&gt;测试结果&lt;/p&gt;
+&lt;p&gt;[root@web108 ~]# curl &lt;a href=&#34;http://localhost:9090/&#34;&gt;http://localhost:9090/&lt;/a&gt;&lt;/p&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=”white”&gt;
+&lt;center&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.1.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;p&gt;[root@web108 ~]# curl &lt;a href=&#34;http://localhost:9090/index.html&#34;&gt;http://localhost:9090/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=”white” text=”black”&gt;
+&lt;center&gt;&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;p&gt;[root@web108 ~]# curl &lt;a href=&#34;http://localhost:9090/index_notfound.html&#34;&gt;http://localhost:9090/index_notfound.html&lt;/a&gt;&lt;/p&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=”white”&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.1.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;p&gt;curl &lt;a href=&#34;http://localhost:9090/&#34;&gt;http://localhost:9090/&lt;/a&gt; 的结果是 “403 Forbidden”，说明被匹配到 “ location / {…deny all;} ” 了，原因很简单 HTTP 请求 GET / 被 “严格精确” 匹配到了普通 location / {} ，则会停止搜索正则 location ；&lt;br&gt;
+curl &lt;a href=&#34;http://localhost:9090/index.html&#34;&gt;http://localhost:9090/index.html&lt;/a&gt; 结果是 “Welcome to nginx!”，说明没有被 “ location / {…deny all;} ” 匹配，否则会 403 Forbidden ，但 /index.html 的确也是以 “ / ” 开头的，只不过此时的普通 location / 的匹配结果是 “最大前缀” 匹配，所以 Nginx 会继续搜索正则 location ， location ~ .html$ 表达了以 .html 结尾的都 allow all; 于是接着就访问到了实际存在的 index.html 页面。&lt;br&gt;
+curl &lt;a href=&#34;http://localhost:9090/index_notfound.html&#34;&gt;http://localhost:9090/index_notfound.html&lt;/a&gt; 同样的道理先匹配 location / {} ，但属于 “普通 location 的最大前缀匹配”，于是后面被 “正则 location ” location ~ .html$ {} 覆盖了，最终 allow all ； 但的确目录下不存在 index_notfound.html 页面，于是 404 Not Found 。&lt;br&gt;
+如果此时我们访问 &lt;a href=&#34;http://localhost:9090/index.txt&#34;&gt;http://localhost:9090/index.txt&lt;/a&gt; 会是什么结果呢？显然是 deny all ；因为先匹配上了 location / {…deny all;} 尽管属于 “普通 location ” 的最大前缀匹配结果，继续搜索正则 location ，但是 /index.txt 不是以 .html 结尾的，正则 location 失败，最终采纳普通 location 的最大前缀匹配结果，于是 deny all 了。&lt;/p&gt;
+&lt;p&gt;例子 2 普通 location 的 “隐式” 严格匹配&lt;/p&gt;
+&lt;p&gt;// 在例子 1 的基础上增加精确匹配&lt;br&gt;
+ server {&lt;br&gt;
+listen       9090;&lt;br&gt;
+server_name  localhost;&lt;br&gt;
+location /exact/match.html {&lt;br&gt;
+allow all;&lt;br&gt;
+}&lt;br&gt;
+location / {&lt;br&gt;
+root   html;&lt;br&gt;
+index  index.html index.htm;&lt;br&gt;
+deny all;&lt;br&gt;
+}&lt;br&gt;
+location ~ .html$ {&lt;br&gt;
+allow all;&lt;br&gt;
+}&lt;br&gt;
+}&lt;br&gt;
+————————————————&lt;/p&gt;
+&lt;p&gt;[root@web108 ~]# curl &lt;a href=&#34;http://localhost:9090/exact/match.html&#34;&gt;http://localhost:9090/exact/match.html&lt;/a&gt;&lt;/p&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=”white”&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.1.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+结果进一步验证了“普通 location ”的“严格精确”匹配会终止对正则 location 的搜索。这里我们小结下“普通 location”与“正则 location ”的匹配规则：先匹配普通 location ，再匹配正则 location ，但是如果普通 location 的匹配结果恰好是“严格精确（ exact match ）”的，则 nginx 不再尝试后面的正则 location ；如果普通 location 的匹配结果是“最大前缀”，则正则 location 的匹配覆盖普通 location 的匹配。也就是前面说的“正则 location 让步普通location 的严格精确匹配结果，但覆盖普通 location 的最大前缀匹配结果”。
+————————————————
+&lt;p&gt;普通 location 的 “显式” 严格匹配和 “ ^~ ” 前缀&lt;br&gt;
+上面我们演示的普通 location 都是不加任何前缀的，其实普通 location 也可以加前缀：“^~” 和 “ = ”。其中 “ ^~” 的意思是 “非正则，不需要继续正则匹配”，也就是通常我们的普通 location ，还会继续搜索正则 location （恰好严格精确匹配除外），但是 nginx 很人性化允许配置人员告诉 nginx 某条普通 location ，无论最大前缀匹配，还是严格精确匹配都终止继续搜索正则 location ；而 “ = ” 则表达的是普通 location 不允许 “最大前缀” 匹配结果，必须严格等于，严格精确匹配。&lt;br&gt;
+————————————————&lt;br&gt;
+ 例子 3&lt;/p&gt;
+&lt;p&gt;server &lt;ruby&gt;
+       listen       9090;
+       server_name  localhost;
+          location /exact/match.html {
+           allow all;
+       }
+           location &lt;rp&gt;【&lt;/rp&gt;&lt;rt&gt;~ / {
+           root   html;
+           index  index.html index.htm;
+           deny all;
+       &lt;/rt&gt;&lt;rp&gt;】&lt;/rp&gt;&lt;/ruby&gt;&lt;br&gt;
+location ~ .html$ {&lt;br&gt;
+allow all;&lt;br&gt;
+}&lt;br&gt;
+}&lt;/p&gt;
+&lt;p&gt;测试&lt;/p&gt;
+&lt;p&gt;curl &lt;a href=&#34;http://localhost:9090/&#34;&gt;http://localhost:9090/&lt;/a&gt;	403 Forbidden	403 Forbidden&lt;br&gt;
+curl &lt;a href=&#34;http://localhost:9090/index.html&#34;&gt;http://localhost:9090/index.html&lt;/a&gt;	Welcome to nginx!	403 Forbidden&lt;br&gt;
+curl &lt;a href=&#34;http://localhost:9090/index_notfound.html&#34;&gt;http://localhost:9090/index_notfound.html&lt;/a&gt;	404 Not Found	403 Forbidden&lt;br&gt;
+curl &lt;a href=&#34;http://localhost:9090/exact/match.html&#34;&gt;http://localhost:9090/exact/match.html&lt;/a&gt;	404 Not Found	404 Not Found&lt;br&gt;
+————————————————&lt;br&gt;
+ 正则 location 与编辑顺序&lt;br&gt;
+ location 的指令与编辑顺序无关，这句话不全对。对于普通 location 指令，匹配规则是：最大前缀匹配（与顺序无关），如果恰好是严格精确匹配结果或者加有前缀 “^~” 或 “ = ”（符号 “ = ” 只能严格匹配，不能前缀匹配），则停止搜索正则 location ；但对于正则 location 的匹配规则是：按编辑顺序逐个匹配（与顺序有关），只要匹配上，就立即停止后面的搜索。&lt;/p&gt;
+&lt;p&gt;server &lt;ruby&gt;
+       listen       9090;
+       server_name  localhost;
+       location ~ \.html$ {
+           allow all; 
+       }  
+       location ~ &lt;rp&gt;【&lt;/rp&gt;&lt;rt&gt;/prefix/.*\.html$ {
+           deny all;  
+       &lt;/rt&gt;&lt;rp&gt;】&lt;/rp&gt;&lt;/ruby&gt;&lt;br&gt;
+}&lt;br&gt;
+server &lt;ruby&gt;
+       listen       9090;
+       server_name  localhost;
+       location ~ &lt;rp&gt;【&lt;/rp&gt;&lt;rt&gt;/prefix/.*\.html$ {
+           deny all;  
+       &lt;/rt&gt;&lt;rp&gt;】&lt;/rp&gt;&lt;/ruby&gt;&lt;br&gt;
+location ~ .html$ {&lt;br&gt;
+allow all;&lt;br&gt;
+}&lt;br&gt;
+}&lt;br&gt;
+————————————————&lt;/p&gt;
+&lt;p&gt;curl &lt;a href=&#34;http://localhost:9090/regextest.html&#34;&gt;http://localhost:9090/regextest.html&lt;/a&gt;	404 Not Found	404 Not Found&lt;br&gt;
+curl &lt;a href=&#34;http://localhost:9090/prefix/regextest.html&#34;&gt;http://localhost:9090/prefix/regextest.html&lt;/a&gt;	404 Not Found	403 Forbidden&lt;br&gt;
+Location ~ ^/prefix/.*.html$ {deny all;} 表示正则 location 对于以 /prefix/ 开头，&lt;br&gt;
+.html 结尾的所有 URI 请求，都拒绝访问；   location ~.html&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;;&lt;/mo&gt;&lt;/mrow&gt;&lt;mtext&gt;表示正则&lt;/mtext&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mtext&gt;对于以&lt;/mtext&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mtext&gt;结尾的&lt;/mtext&gt;&lt;mi&gt;U&lt;/mi&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;I&lt;/mi&gt;&lt;mtext&gt;请求，都允许访问。实际上，&lt;/mtext&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mtext&gt;的是 &lt;/mtext&gt;&lt;mover accent=&#34;true&#34;&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mo&gt;˙&lt;/mo&gt;&lt;/mover&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;{allow all;} 
+ 表示正则 location 对于以 .html 结尾的 URI 请求，都允许访问。 实际上，
+ prefix 的是 ~\.html&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1.1257em;vertical-align:-0.1944em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;ll&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02691em;&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;ll&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;表示正则&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;oc&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;对于以&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;结尾的&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.10903em;&#34;&gt;U&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.00773em;&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.07847em;&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;请求，都允许访问。实际上，&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.10764em;&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的是&lt;/span&gt;&lt;span class=&#34;mspace nobreak&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mord accent&#34;&gt;&lt;span class=&#34;vlist-t&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.9313em;&#34;&gt;&lt;span style=&#34;top:-3em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;h&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3.2634em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;accent-body&#34; style=&#34;left:-0.1389em;&#34;&gt;&lt;span class=&#34;mord&#34;&gt;˙&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 的子集。在 “配置 3.1” 下，两个请求都匹配上 location ~.html$ {allow all;} ，&lt;br&gt;
+并且停止后面的搜索，于是都允许访问， 404 Not Found ；在 “配置 3.2” 下， /regextest.html 无法匹配 prefix ，&lt;br&gt;
+于是继续搜索～.html$ ，允许访问，于是 404 Not Found ；然而 /prefix/regextest.html 匹配到 prefix ，&lt;br&gt;
+于是 deny all ， 403 Forbidden 。&lt;/p&gt;
+</content>
+        <category term="教程" />
+        <category term="nginx" />
+        <updated>2023-02-23T13:28:25.833Z</updated>
+    </entry>
     <entry>
         <id>https://my.durtime.top/posts/55bce094/</id>
         <title>Docker实用篇</title>
