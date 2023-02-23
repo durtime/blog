@@ -1,0 +1,568 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>在 Ubuntu 14.04 服务器上部署 Hexo 博客 | Durtime</title><meta name="author" content="Durtime"><meta name="copyright" content="Durtime"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 导语 除了闷头专研技术之外，程序员还需要不断地写作进行技术积累，写博客是其中最重要的方式之一。商业博客平台不少，但是更符合程序员背景的方案，是自己开发一个博客平台或者使用开源的博客平台。 开源的博客平台多如牛毛，而且不乏优秀之作，如 Hexo、Octopress、Jekyll、Wordpress。本系列文章将分享如何利用各种博客引擎在云端搭建属于自己的个人博客。今天是第一篇，介绍如何在 Ubu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 Ubuntu 14.04 服务器上部署 Hexo 博客">
+<meta property="og:url" content="https://my.durtime.top/posts/undefined/">
+<meta property="og:site_name" content="Durtime">
+<meta property="og:description" content="# 导语 除了闷头专研技术之外，程序员还需要不断地写作进行技术积累，写博客是其中最重要的方式之一。商业博客平台不少，但是更符合程序员背景的方案，是自己开发一个博客平台或者使用开源的博客平台。 开源的博客平台多如牛毛，而且不乏优秀之作，如 Hexo、Octopress、Jekyll、Wordpress。本系列文章将分享如何利用各种博客引擎在云端搭建属于自己的个人博客。今天是第一篇，介绍如何在 Ubu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png">
+<meta property="article:published_time" content="2018-06-07T14:15:37.000Z">
+<meta property="article:modified_time" content="2023-02-23T01:41:51.477Z">
+<meta property="article:author" content="Durtime">
+<meta property="article:tag" content="博客,日常,游戏,分享,">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://my.durtime.top/posts/undefined/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="NdIUXAOVyGnnBhcrip0ksCawbdAzT0hlBZDE9u4jx6k"/><meta name="msvalidate.01" content="567E47D75E8DCF1282B9623AD914701E"/><meta name="baidu-site-verification" content="code-pE5rnuxcfD"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://file.crazywong.com/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://file.crazywong.com/npm/@fancyapps/ui@latest/dist/fancybox.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: Durtime","link":"链接: ","source":"来源: Durtime","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://file.crazywong.com/npm/flickr-justified-gallery@latest/dist/fjGallery.min.js',
+      css: 'https://file.crazywong.com/npm/flickr-justified-gallery@latest/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '在 Ubuntu 14.04 服务器上部署 Hexo 博客',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-23 09:41:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="preconnect" href="https://file.crazywong.com"><style type="text/css">.card-announcement .social-button{margin:.6rem 0 0 0;text-align:center}.card-announcement .social-button a{display:block;background-color:var(--btn-bg);color:var(--btn-color);text-align:center;line-height:2.4;margin:4px 0}.card-announcement .social-button a:hover{background-color:var(--btn-hover-color)}</style></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/loading.gif" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-game"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-thumbs-up"></i><span> 示例</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Durtime"><span class="site-name">Durtime</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-game"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-thumbs-up"></i><span> 示例</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">在 Ubuntu 14.04 服务器上部署 Hexo 博客<a class="post-edit-link" href="https://github.com/jerryc127/butterfly.js.org/edit/main/source/_posts/在_Ubuntu_14.04_服务器上部署_Hexo_博客.md" rel="external nofollow noreferrer" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2018-06-07T14:15:37.000Z" title="发表于 2018-06-07 22:15:37">2018-06-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="在 Ubuntu 14.04 服务器上部署 Hexo 博客"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="导语"><a class="markdownIt-Anchor" href="#导语">#</a> 导语</h2>
+<p>除了闷头专研技术之外，程序员还需要不断地写作进行技术积累，写博客是其中最重要的方式之一。商业博客平台不少，但是更符合程序员背景的方案，是自己开发一个博客平台或者使用开源的博客平台。</p>
+<p>开源的博客平台多如牛毛，而且不乏优秀之作，如 Hexo、Octopress、Jekyll、Wordpress。本系列文章将分享如何利用各种博客引擎在云端搭建属于自己的个人博客。今天是第一篇，介绍如何在 Ubuntu 14.04 上部署 Hexo 博客。</p>
+<p>Hexo 是用 Node.js 开发的一个静态站点生成器（Static Site Generator），支持 Markdown 语法写作，有着强大的插件系统，而且性能优异。阅读不少技术社区分享的文章时，看到国内不少同学都有在用这个引擎，看来「市场占有率」不低。</p>
+<p>本文将介绍如何在一台 Ubuntu 14.04 的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/product/cvm?from=10680">CVM</a> 云服务器上快速部署 Hexo 博客站点，如何快速发布一篇博文并通过云服务器上的私有 Git 仓库部署到 Web 服务器目录下。</p>
+<h2 id="前提条件"><a class="markdownIt-Anchor" href="#前提条件">#</a> 前提条件</h2>
+<p>如果想跟着本教程顺利完成 Hexo 博客的搭建，需要具备以下条件：</p>
+<ol>
+<li>一台安装了 Ubuntu 14.04 的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.qcloud.com/product/cvm?fromSource=gwzcw.84339.84339.84339">CVM 云服务器</a>。一般个人博客的流量都比较低，初期选择 1 核 1GB 内存类型的服务器即可，而且有不少免费试用的时间。</li>
+<li>在本地电脑上安装 Node.js 和 npm，建议谷歌相应关键词了解具体步骤。</li>
+</ol>
+<p>此外，还要在云服务器上安装 Git 和 Nginx 两个必备的软件包。Git 用于版本管理和部署，Nginx 用于静态博客托管。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install git nginx -y</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>另外，本文均以 Windows 为例，演示在本地端的操作，Mac 上的操作会更为简单。Windows 上没有 Mac 的 iTerm2 ，我们以 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://conemu.github.io/">ConEmu</a> + <a target="_blank" rel="noopener external nofollow noreferrer" href="https://git-scm.com/downloads">Git Bash</a> 组成的终端作为替代。如果有读者感兴趣，后续再撰文介绍具体配置方法。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ask.qcloudimg.com/http-save/yehe-900000/0632de768b1137b625dc7cdff521388a.png?imageView2/2/w/1620" alt=""></p>
+<h2 id="1-本地-hexo-安装及初始化"><a class="markdownIt-Anchor" href="#1-本地-hexo-安装及初始化">#</a> 1. 本地 Hexo 安装及初始化</h2>
+<p>NPM 上还有许多 Hexo 相关的包，但是只要安装好了  <code>hexo-cli</code>  和  <code>hexo-server</code>  这两个核心组件之后，就可以让博客跑起来了。</p>
+<p>我们使用 Node.js 的包管理器  <code>npm</code>  安装  <code>hexo-cli</code>  和  <code>hexo-server</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli hexo-server -g</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>hexo-cli 是 Hexo 的<a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/product/cli?from=10680">命令行工具</a>，可用于快速新建、发布、部署博客；hexo-server 是 Hexo 的内建服务器，可用于部署前的预览和测试。 <code>-g</code>  选项，表示全局安装。</p>
+<p>接下来，为 Hexo 博客做一些基础配置，包括创建基础文件。这步操作很简单，Hexo 提供了一个快捷命令，只需要提供一个存放文件的目录地址即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init ~/hexo_blog</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>在国内环境下执行该命令，速度会有些慢。因为需要从 Hexo 在 Github 上的仓库克隆；仓库克隆成功后，会自动执行一系列 npm 命令，自安装依赖模块。</p>
+<p>这时，我们就已经有了一个写作、管理博客的环境。</p>
+<h2 id="2-云端服务器配置"><a class="markdownIt-Anchor" href="#2-云端服务器配置">#</a> 2. 云端服务器配置</h2>
+<p>完成本地端的操作之后，暂时回到服务器的配置。在下面的操作之前，请确保已经购买了一台<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.qcloud.com/product/cvm?fromSource=gwzcw.84339.84339.84339">云服务器</a>，并且能够以 <strong>ubuntu</strong> 用户身份正常登陆。</p>
+<p>在这部分，要完成以下件事情：</p>
+<ol>
+<li>为本地的 hexo_blog 配置一个部署静态文件的远程仓库。<br>
+许多教程均以 Github 作为中转的平台，<strong>但是会让整个流程变得更为复杂，而且会受服务器与 Github 之间网络情况的影响</strong>。假如 Github 宕机或者被封，你将无法更新博客。</li>
+<li>配置 Nginx 托管博客文件目录。</li>
+<li>配置远程仓库自动更新到博客文件目录的钩子。</li>
+</ol>
+<h3 id="21-创建私有-git-仓库"><a class="markdownIt-Anchor" href="#21-创建私有-git-仓库">#</a> 2.1 创建私有 Git 仓库</h3>
+<p>在  <code>/var/repo/</code>  下，创建一个名为  <code>hexo_static</code>  的裸仓库（bare repo）。</p>
+<p>如果没有  <code>/var/repo</code>  目录，需要先创建；然后修改目录的所有权和用户权限，之后 ubuntu 用户都具备  <code>/var/repo</code>  目录下所有新生成的目录和文件的权限。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /<span class="keyword">var</span>/repo/</span><br><span class="line">sudo chown -R <span class="attr">$USER</span>:$USER /<span class="keyword">var</span>/repo/</span><br><span class="line">sudo chmod -R <span class="number">755</span> /<span class="keyword">var</span>/repo/</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>然后，执行如下命令：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /<span class="keyword">var</span>/repo/</span><br><span class="line">git init --bare hexo_static.<span class="property">git</span></span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<h3 id="22-配置-nginx-托管文件目录"><a class="markdownIt-Anchor" href="#22-配置-nginx-托管文件目录">#</a> 2.2 配置 Nginx 托管文件目录</h3>
+<p>接下来，创建  <code>/var/www/hexo</code>  目录，用于 Nginx 托管。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /<span class="keyword">var</span>/www/hexo</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>和上一步类似，这里也需要修改目录的所有权和权限。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R <span class="attr">$USER</span>:$USER /<span class="keyword">var</span>/www/hexo</span><br><span class="line">sudo chmod -R <span class="number">755</span> /<span class="keyword">var</span>/www/hexo</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>然后，修改 Nginx 的  <code>default</code>  设置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-available/<span class="keyword">default</span></span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>将其中的 root 指令指向 /var/www/hexo 目录。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen <span class="number">80</span> default_server;</span><br><span class="line">    listen [::]:<span class="number">80</span> default_server ipv6only=on;</span><br><span class="line"></span><br><span class="line">    root /<span class="keyword">var</span>/www/hexo; # 需要修改的部分</span><br><span class="line">    index index.<span class="property">html</span> index.<span class="property">htm</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>保存并退出文件。如果以后购买并<a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/product/ba?from=10680">备案</a>域名之后，可以再将配置中的 default_server 修改为你的域名。</p>
+<p>最后，重启 Nginx 服务，使得改动生效。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service nginx restart</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>做完这一步之后，你去访问服务器的 IP 时，应该还是会报错的，因为  <code>/var/www/hexo</code>  目录是空的。</p>
+<h3 id="23-创建-git-钩子"><a class="markdownIt-Anchor" href="#23-创建-git-钩子">#</a> 2.3 创建 Git 钩子</h3>
+<p>接下来，在服务器上的裸仓库 hexo_static 创建一个钩子，在满足特定条件时将静态 HTML 文件传送到 Web 服务器的目录下，即 /var/www/hexo。</p>
+<p>在自动生成的 hooks 目录下创建一个新的钩子文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /<span class="keyword">var</span>/repo/hexo_static.<span class="property">git</span>/hooks/post-receive</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>在该文件中添加两行代码，指定 Git 的工作树（源代码）和 Git 目录（配置文件等）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line"></span><br><span class="line">git --work-tree=<span class="regexp">/var/</span>www/hexo --git-dir=<span class="regexp">/var/</span>repo/hexo_static.<span class="property">git</span> checkout -f</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>保存并退出文件，并让该文件变为可执行文件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /<span class="keyword">var</span>/repo/hexo_static.<span class="property">git</span>/hooks/post-receive</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>至此，服务端的配置基本结束。</p>
+<h2 id="3-完成本地-hexo-配置"><a class="markdownIt-Anchor" href="#3-完成本地-hexo-配置">#</a> 3. 完成本地 Hexo 配置</h2>
+<p>在第三部分的操作中，我们将完成以下任务：</p>
+<ol>
+<li>修改 Hexo 配置中的 URL 和默认文章版式</li>
+<li>新建博客草稿并发布</li>
+<li>配置自动部署到服务器端的 hexo_static 裸仓库</li>
+</ol>
+<h3 id="31-修改-hexo-部分默认配置"><a class="markdownIt-Anchor" href="#31-修改-hexo-部分默认配置">#</a> 3.1 修改 Hexo 部分默认配置</h3>
+<p>进入 hexo_blog 目录后，主要有以下文件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- <span class="number">1</span> benjisong <span class="number">1049089</span> <span class="number">1619</span> <span class="title class_">Feb</span> <span class="number">24</span> <span class="number">14</span>:<span class="number">45</span> _config.<span class="property">yml</span></span><br><span class="line">-rw-r--r-- <span class="number">1</span> benjisong <span class="number">1049089</span>  <span class="number">174</span> <span class="title class_">Feb</span> <span class="number">24</span> <span class="number">13</span>:<span class="number">51</span> db.<span class="property">json</span></span><br><span class="line">drwxr-xr-x <span class="number">1</span> benjisong <span class="number">1049089</span>    <span class="number">0</span> <span class="title class_">Feb</span> <span class="number">24</span> <span class="number">12</span>:<span class="number">16</span> node_modules</span><br><span class="line">-rw-r--r-- <span class="number">1</span> benjisong <span class="number">1049089</span>  <span class="number">484</span> <span class="title class_">Feb</span> <span class="number">24</span> <span class="number">12</span>:<span class="number">16</span> package.<span class="property">json</span></span><br><span class="line">drwxr-xr-x <span class="number">1</span> benjisong <span class="number">1049089</span>    <span class="number">0</span> <span class="title class_">Feb</span> <span class="number">24</span> <span class="number">13</span>:<span class="number">50</span> public</span><br><span class="line">drwxr-xr-x <span class="number">1</span> benjisong <span class="number">1049089</span>    <span class="number">0</span> <span class="title class_">Feb</span> <span class="number">24</span> <span class="number">12</span>:<span class="number">08</span> scaffolds</span><br><span class="line">drwxr-xr-x <span class="number">1</span> benjisong <span class="number">1049089</span>    <span class="number">0</span> <span class="title class_">Feb</span> <span class="number">24</span> <span class="number">12</span>:<span class="number">13</span> source</span><br><span class="line">drwxr-xr-x <span class="number">1</span> benjisong <span class="number">1049089</span>    <span class="number">0</span> <span class="title class_">Feb</span> <span class="number">24</span> <span class="number">12</span>:<span class="number">08</span> themes</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>其中， <code>_config.yml</code>  为 Hexo 的主配置文件。我们首先修改博客的 URL 地址。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># <span class="variable constant_">URL</span></span><br><span class="line">## <span class="title class_">If</span> your site is put <span class="keyword">in</span> a subdirectory, set url <span class="keyword">as</span> <span class="string">&#x27;http://yoursite.com/child&#x27;</span> and root <span class="keyword">as</span> <span class="string">&#x27;/child/&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">url</span>: <span class="attr">http</span>:<span class="comment">//server-ip # 没有绑定域名时填写服务器的实际 IP 地址。</span></span><br><span class="line"><span class="attr">root</span>: /</span><br><span class="line"><span class="attr">permalink</span>: :year/:month/:day/:title/</span><br><span class="line"><span class="attr">permalink_defaults</span>:</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>接下来，修改  <code>default_layout</code> ，该字段位于在 <strong>Writing</strong> 部分。将其从  <code>post</code>  修改为  <code>draft</code>  ，表示每篇博文默认都是草稿，必须经过发布之后才能在博客站点上访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># <span class="title class_">Writing</span></span><br><span class="line"><span class="attr">new_post_name</span>: :title.<span class="property">md</span> # <span class="title class_">File</span> name <span class="keyword">of</span> <span class="keyword">new</span> posts</span><br><span class="line"><span class="attr">default_layout</span>: draft # 原来的值是 post</span><br><span class="line"><span class="attr">titlecase</span>: <span class="literal">false</span> # <span class="title class_">Transform</span> title into titlecase</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>暂时保存并退出文件。在 3.3 部分继续进行配置。</p>
+<h3 id="32-新建博客草稿并发布"><a class="markdownIt-Anchor" href="#32-新建博客草稿并发布">#</a> 3.2. 新建博客草稿并发布</h3>
+<p>这里简单演示通过 Hexo 新建博文草稿，并发布的过程。</p>
+<p>执行如下命令，创建第一篇博文。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> first-post</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>你会看到类似如下输出：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">INFO</span>  <span class="title class_">Created</span>: ~\<span class="title class_">Workspace</span>\<span class="title class_">Git</span>\hexo_blog\source\_drafts\first-post.<span class="property">md</span></span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>在本地通过自己熟悉的编辑器，编辑博文。这里，我们把本文的内容写入第一篇博客中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title</span>: 在 <span class="title class_">Ubuntu</span> <span class="number">14.04</span> 服务器上部署 <span class="title class_">Hexo</span> 博客</span><br><span class="line"><span class="attr">tags</span>:</span><br><span class="line">  - <span class="title class_">Ubuntu</span></span><br><span class="line">  - <span class="title class_">Hexo</span></span><br><span class="line"><span class="attr">categories</span>:</span><br><span class="line">  - <span class="title class_">Hexo</span></span><br><span class="line"><span class="attr">comments</span>: <span class="literal">true</span></span><br><span class="line"><span class="attr">date</span>: <span class="number">2017</span>-<span class="number">02</span>-<span class="number">24</span> <span class="number">15</span>:<span class="number">31</span>:<span class="number">00</span></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">## 以下为 <span class="title class_">Markdown</span> 文章正文。</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>然后，通过如下命令发布博客：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish first-post</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>输出类似下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">INFO</span>  <span class="title class_">Published</span>: ~\<span class="title class_">Workspace</span>\<span class="title class_">Git</span>\hexo_blog\source\_posts\first-post.<span class="property">md</span></span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>博客推送到服务器之后，就可以在网站上访问了。</p>
+<h3 id="33-通过-git-部署"><a class="markdownIt-Anchor" href="#33-通过-git-部署">#</a> 3.3 通过 Git 部署</h3>
+<p>到了这一步，可以说万事俱备，只欠东风了。这个东风，就是通过 Git 将 Hexo 生成的静态内容推送到服务器。</p>
+<p>继续编辑  <code>_config.yml</code>  文件，找到 <strong>Deployment</strong> 部分，按照如下情况修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">    <span class="attr">type</span>: git</span><br><span class="line">    <span class="attr">repo</span>: ubuntu@<span class="variable constant_">CVM</span> 云服务器的<span class="variable constant_">IP</span>地址:<span class="regexp">/var/</span>repo/hexo_static</span><br><span class="line">    <span class="attr">branch</span>: master</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>保存并退出文件。</p>
+<p>之后，需要安装一个 Hexo 包，负责将博客所需的静态内容发送到设置好的 Git 仓库。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>安装好后可以测试部署：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>期间可能会提示输入 ubuntu 用户的登录密码（如果没有设置 SSH 登录）。成功之后的输出大致如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> create mode <span class="number">100644</span> tags/<span class="title class_">Node</span>-js/index.<span class="property">html</span></span><br><span class="line"> create mode <span class="number">100644</span> tags/<span class="title class_">Ubuntu</span>/index.<span class="property">html</span></span><br><span class="line"><span class="title class_">Branch</span> master set up to track remote branch master <span class="keyword">from</span> ubuntu@<span class="number">139.199</span><span class="number">.170</span><span class="number">.173</span>:<span class="regexp">/var/</span>repo/hexo_static.</span><br><span class="line"><span class="title class_">To</span> <span class="number">139.199</span><span class="number">.170</span><span class="number">.173</span>:<span class="regexp">/var/</span>repo/hexo_static</span><br><span class="line"> * [<span class="keyword">new</span> branch]      <span class="variable constant_">HEAD</span> -&gt; master</span><br><span class="line"><span class="variable constant_">INFO</span>  <span class="title class_">Deploy</span> <span class="attr">done</span>: git</span><br></pre></td></tr></table></figure>
+<p>复制</p>
+<p>现在，我们就可以在浏览器中打开 139.199.170.173，即可看到自己的博客网站了。</p>
+<p>我们发现，Hexo 对  <code>blockquote</code>  标签的样式并不太美观，需要后续再调优。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ask.qcloudimg.com/http-save/yehe-900000/6899c651f8b4ead9208f6d256eb6a8f4.png?imageView2/2/w/1620" alt=""></p>
+<h2 id="4-通过镜像快速部署"><a class="markdownIt-Anchor" href="#4-通过镜像快速部署">#</a> 4. 通过镜像快速部署</h2>
+<p>本文虽然将 Hexo 博客的大致部署过程明确地列出，但是对于部分初学用户来说可能还会显得较为复杂。如何利用 CVM 云服务器提供商（即腾讯云）的其他服务，快速让其他用户不必经过上面的步骤，快速进行部署呢？</p>
+<p>在云计算中，与虚拟机相关的一个概念是镜像（Image）。用户通过镜像，可以一键启动多个配置一模一样的云服务器。我们这一步通过 CVM 的「制作系统镜像」功能，将 Hexo 博客的服务器端打包。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ask.qcloudimg.com/http-save/yehe-900000/0d429feb9eedc042a27754a8c4f9d004.png?imageView2/2/w/1620" alt=""></p>
+<p>打包后的镜像，还可以上传到<a target="_blank" rel="noopener external nofollow noreferrer" href="http://market.qcloud.com/?fromSource=gwzcw.84340.84340.84340">官方的服务市场</a>，供所有用户使用；还可以直接共享给其他用户。</p>
+<p><strong>如果有用户希望使用该镜像，可在本文下方评论区留下自己的腾讯云账号（登录时使用的 QQ 号或邮箱）</strong>。</p>
+<h3 id="41-镜像的使用"><a class="markdownIt-Anchor" href="#41-镜像的使用">#</a> 4.1 镜像的使用</h3>
+<p>镜像中已经设置好了服务端，通过镜像启动 CVM 云服务器之后，读者只需要根据本文第三部分「完成 Hexo 本地配置」中的步骤，设置好本地 Hexo 写作环境的部署地址和服务器 URL 等参数即可。</p>
+<p>这里有一点一定要注意，<strong>通过镜像启动云服务器时，务必重新设置密码或密钥，否则镜像的制作者有可能轻松地登录你的服务器</strong>。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ask.qcloudimg.com/http-save/yehe-900000/5f26f91461dec58b0163e244bdc7eaef.png?imageView2/2/w/1620" alt=""></p>
+<p><strong>不要选择上图中的方式安装</strong>。</p>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h2>
+<p>本文较为完整地介绍了 Hexo 博客的安装及初始化，服务端如何配置通过 Git 部署等。与其他教程不同，我们没有使用公开的 Github 等第三方服务，而是直接在服务器上创建了私有仓库。然后，通过 Git 钩子，将 Hexo 生成的博客静态文件，快速地推送到 Web 服务的托管目录。</p>
+<p>由于 Hexo 是采用 Node.js 开发的，可能对于其他语言的学习者来说吸引力不大，因为后续自主二次开发难度较高。因此，后续笔者还将介绍其他语言的博客引擎，如用 Python 编写的 Lektor 和用 PHP 编写的 Wordpress 等。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/developer/article/1004587?sharedUid=10332661&amp;shareByChannel=link#3.5">在 Ubuntu 14.04 服务器上部署 Hexo 博客 - 腾讯云开发者社区 - 腾讯云</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zsyyblog.com/5a3d6143.html">为 Hexo+Butterfly 设置语言、网站资料和导航菜单 | 竹山一叶 (zsyyblog.com)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://my.durtime.top">Durtime</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://my.durtime.top/posts/undefined/">https://my.durtime.top/posts/undefined/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://my.durtime.top" target="_blank">Durtime</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://file.crazywong.com/npm/butterfly-extsrc@latest/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://file.crazywong.com/npm/butterfly-extsrc@latest/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://file.crazywong.com/gh/jerryc127/CDN/Photo/wechat.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/Photo/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://file.crazywong.com/gh/jerryc127/CDN/Photo/alipay.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/Photo/alipay.jpg" alt="支付寶"/></a><div class="post-qr-code-desc">支付寶</div></li><li class="reward-item"><a href="https://file.crazywong.com/gh/jerryc127/CDN/Photo/alipayhk.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/Photo/alipayhk.jpg" alt="支付寶香港"/></a><div class="post-qr-code-desc">支付寶香港</div></li></ul></div></div><div class="ads-wrap"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-8919908724705274" data-ad-slot="5978969231"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/posts/89757140/" title="Markdown Style test"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/Markdown-Style-test-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Markdown Style test</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Waline</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/loading.gif" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Durtime</div><div class="author-info__description">The aroma of black tea no longer exists</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly"><i class="fab fa-github"></i><span>主題 GitHub</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:my@crazywong.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如果你在使用中遇到問題，請到 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly/issues" style="color:#49b1f5">Github Issues</a> 或者 <a href="/messageboard/" style="color:#49b1f5">留言板</a> 進行反饋，你也可以加入 QQ 群（由於 QQ 群只能有 500 人，會定時清理潛水的人，不要同時申請 2 个 QQ 群）<div class="social-button"> <a class="button--animated" href="https://jq.qq.com/?_wv=1027&k=KU9105XR" rel="external nofollow noreferrer" target="_blank">QQ 1 群 👍</a> <a class="button--animated" href="https://jq.qq.com/?_wv=1027&k=r1nK0DQz" rel="external nofollow noreferrer" target="_blank">QQ 2 群 👍</a> <a class="button--animated" href="https://t.me/bu2fly" rel="external nofollow noreferrer" target="_blank">Telegram 👍</a> </div></div></div><div class="card-widget card-docs card-categories"><div class="item-headline"><i class="fas fa-car-side"></i><span>文檔目錄</span></div><div class="item-content"><ul class=card-category-list> <li class=card-category-list-item><a class=card-category-list-link href=/posts/21cfbf15/ >🚀 快速開始</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/dc584b87/ >📑 主題頁面</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/4aa8abbe/ >🛠 主題配置-1</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/ceeb73f/ >⚔️ 主題配置-2</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/98d20436/ >❓ 主題問答</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/4073eda/ >⚡️ 進階教程</a></li> <li class=card-category-list-item><a class=card-category-list-link href=/posts/198a4240/ >✨ 更新日誌</a></li> </ul></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%AF%AD"><span class="toc-number">1.</span> <span class="toc-text"> 导语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text"> 前提条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%AC%E5%9C%B0-hexo-%E5%AE%89%E8%A3%85%E5%8F%8A%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text"> 1. 本地 Hexo 安装及初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BA%91%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text"> 2. 云端服务器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89-git-%E4%BB%93%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text"> 2.1 创建私有 Git 仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E9%85%8D%E7%BD%AE-nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">4.2.</span> <span class="toc-text"> 2.2 配置 Nginx 托管文件目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E5%88%9B%E5%BB%BA-git-%E9%92%A9%E5%AD%90"><span class="toc-number">4.3.</span> <span class="toc-text"> 2.3 创建 Git 钩子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%8C%E6%88%90%E6%9C%AC%E5%9C%B0-hexo-%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text"> 3. 完成本地 Hexo 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E4%BF%AE%E6%94%B9-hexo-%E9%83%A8%E5%88%86%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.</span> <span class="toc-text"> 3.1 修改 Hexo 部分默认配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%8D%89%E7%A8%BF%E5%B9%B6%E5%8F%91%E5%B8%83"><span class="toc-number">5.2.</span> <span class="toc-text"> 3.2. 新建博客草稿并发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E9%80%9A%E8%BF%87-git-%E9%83%A8%E7%BD%B2"><span class="toc-number">5.3.</span> <span class="toc-text"> 3.3 通过 Git 部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%80%9A%E8%BF%87%E9%95%9C%E5%83%8F%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2"><span class="toc-number">6.</span> <span class="toc-text"> 4. 通过镜像快速部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E9%95%9C%E5%83%8F%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">6.1.</span> <span class="toc-text"> 4.1 镜像的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text"> 总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/ea33ab97/" title="自定義側邊欄"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/aside-diy-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自定義側邊欄"/></a><div class="content"><a class="title" href="/posts/ea33ab97/" title="自定義側邊欄">自定義側邊欄</a><time datetime="2020-12-30T13:48:10.000Z" title="发表于 2020-12-30 21:48:10">2020-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/c9711c19/" title="當設置 top_img 為 false 時"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/when-set-the-top-img-to-false.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="當設置 top_img 為 false 時"/></a><div class="content"><a class="title" href="/posts/c9711c19/" title="當設置 top_img 為 false 時">當設置 top_img 為 false 時</a><time datetime="2020-10-28T06:15:34.000Z" title="发表于 2020-10-28 14:15:34">2020-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3bd898ff/" title="Butterfly添加全局吸底Aplayer教程"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/Butterfly-add-aplayer-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Butterfly添加全局吸底Aplayer教程"/></a><div class="content"><a class="title" href="/posts/3bd898ff/" title="Butterfly添加全局吸底Aplayer教程">Butterfly添加全局吸底Aplayer教程</a><time datetime="2020-07-31T11:02:28.000Z" title="发表于 2020-07-31 19:02:28">2020-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b37b5fe3/" title="自定義代碼配色"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/CODE-COLOR-COVER.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自定義代碼配色"/></a><div class="content"><a class="title" href="/posts/b37b5fe3/" title="自定義代碼配色">自定義代碼配色</a><time datetime="2020-06-13T12:41:59.000Z" title="发表于 2020-06-13 20:41:59">2020-06-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5933353b/" title="Butterfly 打賞"><img src= "/img/loading.gif" data-lazy-src="https://file.crazywong.com/gh/jerryc127/CDN/img/butterfly-donate-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Butterfly 打賞"/></a><div class="content"><a class="title" href="/posts/5933353b/" title="Butterfly 打賞">Butterfly 打賞</a><time datetime="2020-05-28T14:42:48.000Z" title="发表于 2020-05-28 22:42:48">2020-05-28</time></div></div></div></div><div class="card-widget ads-wrap"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8919908724705274" data-ad-slot="8108145410" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div></div></div></main><footer id="footer" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN/img/material-8.png')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2023 By Durtime</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://file.crazywong.com/npm/hexo-theme-butterfly@latest/source/js/utils.js"></script><script src="https://file.crazywong.com/npm/hexo-theme-butterfly@latest/source/js/main.js"></script><script src="https://file.crazywong.com/npm/hexo-theme-butterfly@latest/source/js/tw_cn.js"></script><script src="https://file.crazywong.com/npm/@fancyapps/ui@latest/dist/fancybox.umd.js"></script><script src="https://file.crazywong.com/npm/instant.page@latest/instantpage.js" type="module"></script><script src="https://file.crazywong.com/npm/vanilla-lazyload@latest/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://file.crazywong.com/npm/mermaid@latest/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://btf-waline.crazywong.com',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, {"placeholder":"請先查看文檔再詢問。主題如有報錯，請試着解決。提問題時請詳細描述遇到的問題，附上相關的報錯 / 截圖 / 網址。","pageSize":8,"lang":"zh-TW","requiredFields":["nick","mail"]}))
+  }
+
+  const walineCSSLoad = document.getElementById('waline-css')
+
+  if (typeof Waline === 'object') {
+    walineCSSLoad ? initWaline() : getCSS('https://file.crazywong.com/npm/@waline/client@latest/dist/waline.css','waline-css').then(initWaline)
+  }
+  else {
+    getCSS('https://file.crazywong.com/npm/@waline/client@latest/dist/waline.css','waline-css').then(() => {
+      getScript('https://file.crazywong.com/npm/@waline/client@latest/dist/waline.js').then(initWaline)
+    })
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://my.durtime.top/posts/undefined/'
+    this.page.identifier = '/posts/undefined/'
+    this.page.title = '在 Ubuntu 14.04 服务器上部署 Hexo 博客'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://demo-jerryc-me.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Waline' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const loadWaline = () => {
+      Waline.RecentComments({
+        serverURL: 'https://btf-waline.crazywong.com',
+        count: 6
+      }).then(({comments}) => {
+        const walineArray = comments.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.insertedAt,
+          }
+        })
+        saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 5/(60*24))
+        generateHtml(walineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      }) 
+    }
+
+    if (typeof Waline === 'object') loadWaline()
+    else getScript('https://file.crazywong.com/npm/@waline/client@latest/dist/waline.js').then(loadWaline)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script defer="defer" id="ribbon" src="https://file.crazywong.com/npm/butterfly-extsrc@latest/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="https://file.crazywong.com/npm/pjax@latest/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/talking/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="https://file.crazywong.com/npm/hexo-theme-butterfly@latest/source/js/search/local-search.js"></script></div></body></html>
