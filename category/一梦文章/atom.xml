@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://my.durtime.top</id>
+    <id>https://durtime.github.io/blog</id>
     <title>Durtime • Posts by &#34;一梦文章&#34; category</title>
-    <link href="https://my.durtime.top" />
+    <link href="https://durtime.github.io/blog" />
     <updated>2022-05-28T14:36:02.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://my.durtime.top/posts/65ad05d8/</id>
+        <id>https://durtime.github.io/blog/posts/65ad05d8/</id>
         <title>一梦文章推荐业务(一)</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/65ad05d8/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/65ad05d8/"/>
         <content type="html">&lt;h1 id=&#34;1-数据库迁移需求&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-数据库迁移需求&#34;&gt;#&lt;/a&gt; 1 数据库迁移需求&lt;/h1&gt;
 &lt;p&gt;业务 mysql 数据库中的数据，会同步到我们的 hadoop 的 hive 数据仓库中。&lt;/p&gt;
 &lt;ul&gt;

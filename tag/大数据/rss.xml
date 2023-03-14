@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Durtime • Posts by &#34;大数据&#34; tag</title>
-        <link>https://my.durtime.top</link>
+        <link>https://durtime.github.io/blog</link>
         <description>The aroma of black tea no longer exists</description>
         <language>zh-CN</language>
         <pubDate>Sun, 12 Mar 2023 09:34:41 +0800</pubDate>
@@ -23,9 +23,9 @@
         <category>Ip</category>
         <category>运维</category>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/1fd8e8b9/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/1fd8e8b9/</guid>
             <title>推荐业务(一)</title>
-            <link>https://my.durtime.top/posts/1fd8e8b9/</link>
+            <link>https://durtime.github.io/blog/posts/1fd8e8b9/</link>
             <category>推荐</category>
             <category>大数据</category>
             <category>hadoop</category>
@@ -67,9 +67,9 @@ TF-IDF = 某文档中某词或字出现的次数 / 该文档的总字数或总�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/c4e7614/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/c4e7614/</guid>
             <title>Tf-idf算法</title>
-            <link>https://my.durtime.top/posts/c4e7614/</link>
+            <link>https://durtime.github.io/blog/posts/c4e7614/</link>
             <category>推荐</category>
             <category>算法</category>
             <category>大数据</category>
@@ -121,9 +121,9 @@ TF-IDF 的思想比较简单，但是却非常实用。然而这种方法还是�
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;from sklearn.feature_extraction.text import TfidfVectorizer&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;tfidf_vec = TfidfVectorizer()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# stop words自定义停用词表，为列表List类型&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# token_pattern过滤规则，正则表达式，如r&amp;quot;(?u)bw+b&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# max_df=0.5，代表一个单词在 50% 的文档中都出现过了，那么它只携带了非常少的信息，因此就不作为分词统计&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;documents = [&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x27;this is the bayes document&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x27;this is the second second document&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x27;and the third one&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x27;is this the document&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;tfidf_matrix = tfidf_vec.fit_transform(documents)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# 拟合模型，并返回文本矩阵  表示了每个单词在每个文档中的 TF-IDF 值&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;输出每个单词在每个文档中的 TF-IDF 值，向量里的顺序是按照词语的 id 顺序来的:&amp;#x27;, &amp;#x27;\n&amp;#x27;, tfidf_matrix.toarray())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;不重复的词:&amp;#x27;, tfidf_vec.get_feature_names())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;输出每个单词对应的 id 值:&amp;#x27;, tfidf_vec.vocabulary_)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;返回idf值:&amp;#x27;, tfidf_vec.idf_)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;返回停用词表:&amp;#x27;, tfidf_vec.stop_words_)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/65ad05d8/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/65ad05d8/</guid>
             <title>一梦文章推荐业务(一)</title>
-            <link>https://my.durtime.top/posts/65ad05d8/</link>
+            <link>https://durtime.github.io/blog/posts/65ad05d8/</link>
             <category>推荐</category>
             <category>大数据</category>
             <category>hadoop</category>

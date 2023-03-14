@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Durtime • Posts by &#34;一梦文章&#34; category</title>
-        <link>https://my.durtime.top</link>
+        <link>https://durtime.github.io/blog</link>
         <description>The aroma of black tea no longer exists</description>
         <language>zh-CN</language>
         <pubDate>Sat, 28 May 2022 22:36:02 +0800</pubDate>
@@ -23,9 +23,9 @@
         <category>Ip</category>
         <category>运维</category>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/65ad05d8/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/65ad05d8/</guid>
             <title>一梦文章推荐业务(一)</title>
-            <link>https://my.durtime.top/posts/65ad05d8/</link>
+            <link>https://durtime.github.io/blog/posts/65ad05d8/</link>
             <category>推荐</category>
             <category>大数据</category>
             <category>hadoop</category>

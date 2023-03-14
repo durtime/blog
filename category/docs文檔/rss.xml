@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Durtime • Posts by &#34;docs文檔&#34; category</title>
-        <link>https://my.durtime.top</link>
+        <link>https://durtime.github.io/blog</link>
         <description>The aroma of black tea no longer exists</description>
         <language>zh-CN</language>
         <pubDate>Thu, 28 May 2020 22:38:11 +0800</pubDate>
@@ -23,9 +23,9 @@
         <category>Ip</category>
         <category>运维</category>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/ceeb73f/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/ceeb73f/</guid>
             <title>Butterfly 安裝文檔(四) 主題配置-2</title>
-            <link>https://my.durtime.top/posts/ceeb73f/</link>
+            <link>https://durtime.github.io/blog/posts/ceeb73f/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>
@@ -869,9 +869,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/36a80a35/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/36a80a35/</guid>
             <title>Butterfly 安裝文檔(三) 主題配置-1</title>
-            <link>https://my.durtime.top/posts/36a80a35/</link>
+            <link>https://durtime.github.io/blog/posts/36a80a35/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>
@@ -2187,9 +2187,9 @@ This is my website, click the button &lt;a class=&#34;btn-beautify larger&#34; h
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/956161ca/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/956161ca/</guid>
             <title>Butterfly 安裝文檔(二) 主題頁面</title>
-            <link>https://my.durtime.top/posts/956161ca/</link>
+            <link>https://durtime.github.io/blog/posts/956161ca/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>
@@ -2526,9 +2526,9 @@ This is my website, click the button &lt;a class=&#34;btn-beautify larger&#34; h
   title=&#34;🛠 Butterfly 安裝文檔(三) 主題配置&#34;&gt;&lt;i class=&#34;far fa-hand-point-right&#34;&gt;&lt;/i&gt;&lt;span&gt;🛠 Butterfly 安裝文檔(三) 主題配置&lt;/span&gt;&lt;/a&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/8e33c3e1/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/8e33c3e1/</guid>
             <title>Butterfly 安裝文檔(一) 快速開始</title>
-            <link>https://my.durtime.top/posts/8e33c3e1/</link>
+            <link>https://durtime.github.io/blog/posts/8e33c3e1/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>

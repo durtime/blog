@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://my.durtime.top</id>
+    <id>https://durtime.github.io/blog</id>
     <title>Durtime • Posts by &#34;nginx&#34; tag</title>
-    <link href="https://my.durtime.top" />
+    <link href="https://durtime.github.io/blog" />
     <updated>2023-02-13T01:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://my.durtime.top/posts/2bee8b90/</id>
+        <id>https://durtime.github.io/blog/posts/2bee8b90/</id>
         <title>nginx配置</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/2bee8b90/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/2bee8b90/"/>
         <content type="html">&lt;h1 id=&#34;nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;#&lt;/a&gt; Nginx——location 常见配置指令，alias、root、proxy_pass 路径问题&lt;/h1&gt;
 &lt;p&gt;1.【alias】&lt;/p&gt;
 &lt;p&gt;别名配置，用于访问文件系统，在匹配到 location 配置的 URL 路径后，指向【alias】配置的路径。如：&lt;/p&gt;

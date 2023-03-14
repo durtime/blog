@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Durtime • Posts by &#34;大数据&#34; category</title>
-        <link>https://my.durtime.top</link>
+        <link>https://durtime.github.io/blog</link>
         <description>The aroma of black tea no longer exists</description>
         <language>zh-CN</language>
         <pubDate>Sun, 12 Mar 2023 09:34:41 +0800</pubDate>
@@ -23,9 +23,9 @@
         <category>Ip</category>
         <category>运维</category>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/1fd8e8b9/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/1fd8e8b9/</guid>
             <title>推荐业务(一)</title>
-            <link>https://my.durtime.top/posts/1fd8e8b9/</link>
+            <link>https://durtime.github.io/blog/posts/1fd8e8b9/</link>
             <category>推荐</category>
             <category>大数据</category>
             <category>hadoop</category>
@@ -67,9 +67,9 @@ TF-IDF = 某文档中某词或字出现的次数 / 该文档的总字数或总�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://my.durtime.top/posts/c4e7614/</guid>
+            <guid isPermalink="true">https://durtime.github.io/blog/posts/c4e7614/</guid>
             <title>Tf-idf算法</title>
-            <link>https://my.durtime.top/posts/c4e7614/</link>
+            <link>https://durtime.github.io/blog/posts/c4e7614/</link>
             <category>推荐</category>
             <category>算法</category>
             <category>大数据</category>

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://my.durtime.top</id>
+    <id>https://durtime.github.io/blog</id>
     <title>Durtime</title>
-    <link href="https://my.durtime.top" />
+    <link href="https://durtime.github.io/blog" />
     <updated>2023-03-13T01:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://my.durtime.top/posts/aeafe6b5/</id>
+        <id>https://durtime.github.io/blog/posts/aeafe6b5/</id>
         <title>系统接入访问量统计</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/aeafe6b5/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/aeafe6b5/"/>
         <content type="html">&lt;h1 id=&#34;集成ip2region实现离线ip地址定位&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#集成ip2region实现离线ip地址定位&#34;&gt;#&lt;/a&gt; 集成 ip2region 实现离线 IP 地址定位&lt;/h1&gt;
 &lt;p&gt;离线 IP 地址定位库主要用于内网或想减少对外访问 http 带来的资源消耗。（代码已兼容支持 jar 包部署）&lt;/p&gt;
 &lt;h2 id=&#34;1-引入依赖&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-引入依赖&#34;&gt;#&lt;/a&gt; 1、引入依赖&lt;/h2&gt;
@@ -54,9 +54,9 @@
         <updated>2023-03-13T01:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/1fd8e8b9/</id>
+        <id>https://durtime.github.io/blog/posts/1fd8e8b9/</id>
         <title>推荐业务(一)</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/1fd8e8b9/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/1fd8e8b9/"/>
         <content type="html">&lt;h1 id=&#34;1-离线画像业务&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-离线画像业务&#34;&gt;#&lt;/a&gt; 1 离线画像业务&lt;/h1&gt;
 &lt;p&gt;画像的构建作为推荐系统非常重要的环节，画像可以作为整个产品的推荐或者营销重要依据。需要通过各种方法来构建。&lt;/p&gt;
 &lt;p&gt;文章内容标签化：内容标签化，根据内容定性的制定一系列标签，这些标签可以是描述性标签。针对于文章就是文章相关的内容词语。&lt;/p&gt;
@@ -98,9 +98,9 @@ TF-IDF = 某文档中某词或字出现的次数 / 该文档的总字数或总�
         <updated>2023-03-12T01:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/c4e7614/</id>
+        <id>https://durtime.github.io/blog/posts/c4e7614/</id>
         <title>Tf-idf算法</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/c4e7614/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/c4e7614/"/>
         <content type="html">&lt;h1 id=&#34;什么是-tf-idf-算法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#什么是-tf-idf-算法&#34;&gt;#&lt;/a&gt; 什么是 TF-IDF 算法？&lt;/h1&gt;
 &lt;p&gt;TF（全称 TermFrequency），中文含义词频，简单理解就是关键词出现在网页当中的频次。&lt;/p&gt;
 &lt;p&gt;IDF（全称 InverseDocumentFrequency），中文含义逆文档频率，简单来说就是该关键词出现在所有文档里面的一种数据集合。&lt;/p&gt;
@@ -152,9 +152,9 @@ TF-IDF 的思想比较简单，但是却非常实用。然而这种方法还是�
         <updated>2023-03-10T01:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/2bee8b90/</id>
+        <id>https://durtime.github.io/blog/posts/2bee8b90/</id>
         <title>Win10 ssh</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/2bee8b90/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/2bee8b90/"/>
         <content type="html">&lt;p&gt;配置过程&lt;/p&gt;
 &lt;h2 id=&#34;1-首先生成密钥对&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-首先生成密钥对&#34;&gt;#&lt;/a&gt; 1. 首先生成密钥对&lt;/h2&gt;
 &lt;p&gt;ssh-keygen -t rsa   #-t 表示类型选项，这里采用 rsa 加密算法&lt;/p&gt;
@@ -173,9 +173,9 @@ TF-IDF 的思想比较简单，但是却非常实用。然而这种方法还是�
         <updated>2023-03-09T04:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/57ee7c1d/</id>
+        <id>https://durtime.github.io/blog/posts/57ee7c1d/</id>
         <title>Hexo搭建</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/57ee7c1d/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/57ee7c1d/"/>
         <content type="html">&lt;h1 id=&#34;github-部署&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#github-部署&#34;&gt;#&lt;/a&gt; GitHub 部署&lt;/h1&gt;
 &lt;p&gt;npm install hexo-deployer-git --save&lt;/p&gt;
 &lt;p&gt;deploy:&lt;br&gt;
@@ -229,9 +229,9 @@ hexo deploy&lt;/p&gt;
         <updated>2023-02-23T14:05:12.001Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/2bee8b90/</id>
+        <id>https://durtime.github.io/blog/posts/2bee8b90/</id>
         <title>nginx配置</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/2bee8b90/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/2bee8b90/"/>
         <content type="html">&lt;h1 id=&#34;nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;#&lt;/a&gt; Nginx——location 常见配置指令，alias、root、proxy_pass 路径问题&lt;/h1&gt;
 &lt;p&gt;1.【alias】&lt;/p&gt;
 &lt;p&gt;别名配置，用于访问文件系统，在匹配到 location 配置的 URL 路径后，指向【alias】配置的路径。如：&lt;/p&gt;
@@ -561,9 +561,9 @@ allow all;&lt;br&gt;
         <updated>2023-02-13T01:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/0/</id>
+        <id>https://durtime.github.io/blog/posts/0/</id>
         <title>Butterfly添加全局吸底Aplayer教程</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/0/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/0/"/>
         <content type="html">&lt;div class=&#34;note info flat&#34;&gt;&lt;p&gt;以下文章只是教程&lt;/p&gt;
 &lt;p&gt;如果部署之后，并没有出现 aplayer , 请确认是否跟足步骤操作或者更换音乐源，多试试。&lt;/p&gt;
 &lt;p&gt;如果遇到使用問題，请仔细查看插件文档，或者到插件那裏反饋。&lt;/p&gt;
@@ -702,9 +702,9 @@ allow all;&lt;br&gt;
         <updated>2022-07-31T11:02:28.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/undefined/</id>
+        <id>https://durtime.github.io/blog/posts/undefined/</id>
         <title>在 Ubuntu 14.04 服务器上部署 Hexo 博客</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/undefined/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/undefined/"/>
         <content type="html">&lt;h2 id=&#34;导语&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#导语&#34;&gt;#&lt;/a&gt; 导语&lt;/h2&gt;
 &lt;p&gt;除了闷头专研技术之外，程序员还需要不断地写作进行技术积累，写博客是其中最重要的方式之一。商业博客平台不少，但是更符合程序员背景的方案，是自己开发一个博客平台或者使用开源的博客平台。&lt;/p&gt;
 &lt;p&gt;开源的博客平台多如牛毛，而且不乏优秀之作，如 Hexo、Octopress、Jekyll、Wordpress。本系列文章将分享如何利用各种博客引擎在云端搭建属于自己的个人博客。今天是第一篇，介绍如何在 Ubuntu 14.04 上部署 Hexo 博客。&lt;/p&gt;
@@ -853,9 +853,9 @@ allow all;&lt;br&gt;
         <updated>2022-06-07T14:15:37.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/3c50d03d/</id>
+        <id>https://durtime.github.io/blog/posts/3c50d03d/</id>
         <title>Markdown语法</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/3c50d03d/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/3c50d03d/"/>
         <content type="html">&lt;h1 id=&#34;简介&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h1&gt;
 &lt;p&gt;Markdown 是一种轻量级标记语言，它用简洁的语法代替排版，使我们专心于码字。它的目标是实现易读易写，成为一种适用于网络的书写语言。同时，Markdown 支持嵌入 html 标签。&lt;/p&gt;
 &lt;p&gt;&lt;u&gt;注意：Markdown 使用 #、+、* 等符号来标记， 符号后面必须跟上 至少 1 个 空格才有效！&lt;/u&gt;&lt;/p&gt;
@@ -1090,9 +1090,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
         <updated>2022-05-29T14:36:02.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/65ad05d8/</id>
+        <id>https://durtime.github.io/blog/posts/65ad05d8/</id>
         <title>一梦文章推荐业务(一)</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/65ad05d8/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/65ad05d8/"/>
         <content type="html">&lt;h1 id=&#34;1-数据库迁移需求&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-数据库迁移需求&#34;&gt;#&lt;/a&gt; 1 数据库迁移需求&lt;/h1&gt;
 &lt;p&gt;业务 mysql 数据库中的数据，会同步到我们的 hadoop 的 hive 数据仓库中。&lt;/p&gt;
 &lt;ul&gt;
@@ -1125,9 +1125,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
         <updated>2022-05-28T14:36:02.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/55bce094/</id>
+        <id>https://durtime.github.io/blog/posts/55bce094/</id>
         <title>Docker实用篇</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/55bce094/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/55bce094/"/>
         <content type="html">&lt;h1 id=&#34;docker实用篇&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#docker实用篇&#34;&gt;#&lt;/a&gt; Docker 实用篇&lt;/h1&gt;
 &lt;h1 id=&#34;0学习目标&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0学习目标&#34;&gt;#&lt;/a&gt; 0. 学习目标&lt;/h1&gt;
 &lt;h1 id=&#34;1初识docker&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1初识docker&#34;&gt;#&lt;/a&gt; 1. 初识 Docker&lt;/h1&gt;
@@ -1730,9 +1730,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
         <updated>2022-05-28T14:31:46.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/ceeb73f/</id>
+        <id>https://durtime.github.io/blog/posts/ceeb73f/</id>
         <title>Butterfly 安裝文檔(四) 主題配置-2</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/ceeb73f/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/ceeb73f/"/>
         <content type="html">&lt;div class=&#34;note blue icon-padding flat&#34;&gt;&lt;i class=&#34;note-icon fas fa-bullhorn&#34;&gt;&lt;/i&gt;&lt;p&gt;📖  本教程更新於 2023 年 02 月 20 日，教程的內容針對最新&lt;strong&gt;穩定版&lt;/strong&gt;而更新（如果你是舊版，教程會有些出入，請留意）&lt;/p&gt;
 &lt;p&gt;🦋  Butterfly 已經更新到 &lt;a href=&#34;https://github.com/jerryc127/hexo-theme-butterfly/releases/tag/4.7.0&#34;&gt;4.7.0&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
@@ -2576,9 +2576,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
         <updated>2020-05-28T14:38:11.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/36a80a35/</id>
+        <id>https://durtime.github.io/blog/posts/36a80a35/</id>
         <title>Butterfly 安裝文檔(三) 主題配置-1</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/36a80a35/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/36a80a35/"/>
         <content type="html">&lt;div class=&#34;note blue icon-padding flat&#34;&gt;&lt;i class=&#34;note-icon fas fa-bullhorn&#34;&gt;&lt;/i&gt;&lt;p&gt;📖  本教程更新於 2023 年 02 月 20 日，教程的內容針對最新&lt;strong&gt;穩定版&lt;/strong&gt;而更新（如果你是舊版，教程會有些出入，請留意）&lt;/p&gt;
 &lt;p&gt;🦋  Butterfly 已經更新到 &lt;a href=&#34;https://github.com/jerryc127/hexo-theme-butterfly/releases/tag/4.7.0&#34;&gt;4.7.0&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
@@ -3894,9 +3894,9 @@ This is my website, click the button &lt;a class=&#34;btn-beautify larger&#34; h
         <updated>2020-05-28T14:36:02.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/956161ca/</id>
+        <id>https://durtime.github.io/blog/posts/956161ca/</id>
         <title>Butterfly 安裝文檔(二) 主題頁面</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/956161ca/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/956161ca/"/>
         <content type="html">&lt;div class=&#34;note blue icon-padding flat&#34;&gt;&lt;i class=&#34;note-icon fas fa-bullhorn&#34;&gt;&lt;/i&gt;&lt;p&gt;📖  本教程更新於 2023 年 02 月 20 日，教程的內容針對最新&lt;strong&gt;穩定版&lt;/strong&gt;而更新（如果你是舊版，教程會有些出入，請留意）&lt;/p&gt;
 &lt;p&gt;🦋  Butterfly 已經更新到 &lt;a href=&#34;https://github.com/jerryc127/hexo-theme-butterfly/releases/tag/4.7.0&#34;&gt;4.7.0&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
@@ -4233,9 +4233,9 @@ This is my website, click the button &lt;a class=&#34;btn-beautify larger&#34; h
         <updated>2020-05-28T14:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://my.durtime.top/posts/8e33c3e1/</id>
+        <id>https://durtime.github.io/blog/posts/8e33c3e1/</id>
         <title>Butterfly 安裝文檔(一) 快速開始</title>
-        <link rel="alternate" href="https://my.durtime.top/posts/8e33c3e1/"/>
+        <link rel="alternate" href="https://durtime.github.io/blog/posts/8e33c3e1/"/>
         <content type="html">&lt;div class=&#34;note blue icon-padding flat&#34;&gt;&lt;i class=&#34;note-icon fas fa-bullhorn&#34;&gt;&lt;/i&gt;&lt;p&gt;📖  本教程更新於 2023 年 02 月 20 日，教程的內容針對最新&lt;strong&gt;穩定版&lt;/strong&gt;而更新（如果你是舊版，教程會有些出入，請留意）&lt;/p&gt;
 &lt;p&gt;🦋  Butterfly 已經更新到 &lt;a href=&#34;https://github.com/jerryc127/hexo-theme-butterfly/releases/tag/4.7.0&#34;&gt;4.7.0&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
