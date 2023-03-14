@@ -3,15 +3,22 @@
     <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;ssh&#34; tag</title>
     <link href="https://my.durtime.top" />
-    <updated>2023-02-23T14:40:01.116Z</updated>
+    <updated>2023-03-09T04:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
     <category term="主題" />
     <category term="butterfly" />
     <category term="Aplayer" />
     <category term="Docker" />
+    <category term="Markdown语法" />
+    <category term="推荐" />
+    <category term="算法" />
+    <category term="大数据" />
     <category term="nginx" />
     <category term="ssh" />
+    <category term="hadoop" />
+    <category term="Ip" />
+    <category term="运维" />
     <entry>
         <id>https://my.durtime.top/posts/2bee8b90/</id>
         <title>Win10 ssh</title>
@@ -31,6 +38,6 @@
 </content>
         <category term="教程" />
         <category term="ssh" />
-        <updated>2023-02-23T14:40:01.116Z</updated>
+        <updated>2023-03-09T04:34:41.000Z</updated>
     </entry>
 </feed>

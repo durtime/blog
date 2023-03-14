@@ -5,23 +5,30 @@
         <link>https://my.durtime.top</link>
         <description>The aroma of black tea no longer exists</description>
         <language>zh-CN</language>
-        <pubDate>Thu, 23 Feb 2023 21:28:25 +0800</pubDate>
-        <lastBuildDate>Thu, 23 Feb 2023 21:28:25 +0800</lastBuildDate>
+        <pubDate>Mon, 13 Feb 2023 09:34:41 +0800</pubDate>
+        <lastBuildDate>Mon, 13 Feb 2023 09:34:41 +0800</lastBuildDate>
         <category>教程</category>
         <category>Hexo</category>
         <category>主題</category>
         <category>butterfly</category>
         <category>Aplayer</category>
         <category>Docker</category>
+        <category>Markdown语法</category>
+        <category>推荐</category>
+        <category>算法</category>
+        <category>大数据</category>
         <category>nginx</category>
         <category>ssh</category>
+        <category>hadoop</category>
+        <category>Ip</category>
+        <category>运维</category>
         <item>
             <guid isPermalink="true">https://my.durtime.top/posts/2bee8b90/</guid>
             <title>nginx配置</title>
             <link>https://my.durtime.top/posts/2bee8b90/</link>
             <category>教程</category>
             <category>nginx</category>
-            <pubDate>Thu, 23 Feb 2023 21:28:25 +0800</pubDate>
+            <pubDate>Mon, 13 Feb 2023 09:34:41 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;#&lt;/a&gt; Nginx——location 常见配置指令，alias、root、proxy_pass 路径问题&lt;/h1&gt;
 &lt;p&gt;1.【alias】&lt;/p&gt;
 &lt;p&gt;别名配置，用于访问文件系统，在匹配到 location 配置的 URL 路径后，指向【alias】配置的路径。如：&lt;/p&gt;

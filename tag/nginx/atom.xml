@@ -3,15 +3,22 @@
     <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;nginx&#34; tag</title>
     <link href="https://my.durtime.top" />
-    <updated>2023-02-23T13:28:25.833Z</updated>
+    <updated>2023-02-13T01:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
     <category term="主題" />
     <category term="butterfly" />
     <category term="Aplayer" />
     <category term="Docker" />
+    <category term="Markdown语法" />
+    <category term="推荐" />
+    <category term="算法" />
+    <category term="大数据" />
     <category term="nginx" />
     <category term="ssh" />
+    <category term="hadoop" />
+    <category term="Ip" />
+    <category term="运维" />
     <entry>
         <id>https://my.durtime.top/posts/2bee8b90/</id>
         <title>nginx配置</title>
@@ -342,6 +349,6 @@ allow all;&lt;br&gt;
 </content>
         <category term="教程" />
         <category term="nginx" />
-        <updated>2023-02-23T13:28:25.833Z</updated>
+        <updated>2023-02-13T01:34:41.000Z</updated>
     </entry>
 </feed>

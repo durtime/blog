@@ -3,15 +3,22 @@
     <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;教程&#34; category</title>
     <link href="https://my.durtime.top" />
-    <updated>2023-02-23T14:40:01.116Z</updated>
+    <updated>2023-03-09T04:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
     <category term="主題" />
     <category term="butterfly" />
     <category term="Aplayer" />
     <category term="Docker" />
+    <category term="Markdown语法" />
+    <category term="推荐" />
+    <category term="算法" />
+    <category term="大数据" />
     <category term="nginx" />
     <category term="ssh" />
+    <category term="hadoop" />
+    <category term="Ip" />
+    <category term="运维" />
     <entry>
         <id>https://my.durtime.top/posts/2bee8b90/</id>
         <title>Win10 ssh</title>
@@ -31,7 +38,7 @@
 </content>
         <category term="教程" />
         <category term="ssh" />
-        <updated>2023-02-23T14:40:01.116Z</updated>
+        <updated>2023-03-09T04:34:41.000Z</updated>
     </entry>
     <entry>
         <id>https://my.durtime.top/posts/57ee7c1d/</id>
@@ -419,7 +426,7 @@ allow all;&lt;br&gt;
 </content>
         <category term="教程" />
         <category term="nginx" />
-        <updated>2023-02-23T13:28:25.833Z</updated>
+        <updated>2023-02-13T01:34:41.000Z</updated>
     </entry>
     <entry>
         <id>https://my.durtime.top/posts/0/</id>
@@ -561,6 +568,243 @@ allow all;&lt;br&gt;
         <category term="butterfly" />
         <category term="Aplayer" />
         <updated>2022-07-31T11:02:28.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://my.durtime.top/posts/3c50d03d/</id>
+        <title>Markdown语法</title>
+        <link rel="alternate" href="https://my.durtime.top/posts/3c50d03d/"/>
+        <content type="html">&lt;h1 id=&#34;简介&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h1&gt;
+&lt;p&gt;Markdown 是一种轻量级标记语言，它用简洁的语法代替排版，使我们专心于码字。它的目标是实现易读易写，成为一种适用于网络的书写语言。同时，Markdown 支持嵌入 html 标签。&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;注意：Markdown 使用 #、+、* 等符号来标记， 符号后面必须跟上 至少 1 个 空格才有效！&lt;/u&gt;&lt;/p&gt;
+&lt;h1 id=&#34;markdown的常用语法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#markdown的常用语法&#34;&gt;#&lt;/a&gt; Markdown 的常用语法&lt;/h1&gt;
+&lt;p&gt;标题&lt;br&gt;
+ Markdown 标题支持两种形式：&lt;/p&gt;
+&lt;p&gt;1、用 #标记&lt;/p&gt;
+&lt;p&gt;在 标题开头 加上 1~6 个 #，依次代表一级标题、二级标题… 六级标题&lt;/p&gt;
+&lt;h1 id=&#34;一级标题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一级标题&#34;&gt;#&lt;/a&gt; 一级标题&lt;/h1&gt;
+&lt;h2 id=&#34;二级标题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二级标题&#34;&gt;#&lt;/a&gt; 二级标题&lt;/h2&gt;
+&lt;h3 id=&#34;三级标题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三级标题&#34;&gt;#&lt;/a&gt; 三级标题&lt;/h3&gt;
+&lt;h5 id=&#34;四级标题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#四级标题&#34;&gt;#&lt;/a&gt; 四级标题&lt;/h5&gt;
+&lt;h6 id=&#34;五级标题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#五级标题&#34;&gt;#&lt;/a&gt; 五级标题&lt;/h6&gt;
+&lt;h6 id=&#34;六级标题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#六级标题&#34;&gt;#&lt;/a&gt; 六级标题&lt;/h6&gt;
+&lt;p&gt;2、用 = 和 - 标记&lt;/p&gt;
+&lt;p&gt;在 标题底下 加上任意个 = 代表一级标题，- 代表二级标题&lt;/p&gt;
+&lt;h1 id=&#34;一级标题-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一级标题-2&#34;&gt;#&lt;/a&gt; 一级标题&lt;/h1&gt;
+&lt;h2 id=&#34;二级标题-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二级标题-2&#34;&gt;#&lt;/a&gt; 二级标题&lt;/h2&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;p&gt;一级标题&lt;br&gt;
+二级标题&lt;br&gt;
+三级标题&lt;br&gt;
+四级标题&lt;br&gt;
+五级标题&lt;br&gt;
+六级标题&lt;br&gt;
+列表&lt;br&gt;
+ Markdown 支持有序列表和无序列表。&lt;/p&gt;
+&lt;p&gt;无序列表使用 -、+ 和 * 作为列表标记：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;br&gt;
+ 效果如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Red&lt;br&gt;
+Green&lt;br&gt;
+Blue&lt;br&gt;
+ 有序列表则使用数字加英文句点。来表示：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;br&gt;
+ 效果如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Red&lt;br&gt;
+Green&lt;br&gt;
+Blue&lt;br&gt;
+ 引用&lt;br&gt;
+引用以 &amp;gt; 来表示，引用中支持多级引用、标题、列表、代码块、分割线等常规语法。&lt;/p&gt;
+&lt;p&gt;常见的引用写法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是一段引用    // 在 &lt;code&gt;&amp;gt;&lt;/code&gt;  后面有 1 个空格&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;这是引用的代码块形式    //在`&amp;gt;`后面有 5 个空格
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;代码例子：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;protected void onCreate(Bundle savedInstanceState) &amp;#123;
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一级引用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;二级引用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;三级引用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;h4 id=&#34;这是一个四级标题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#这是一个四级标题&#34;&gt;#&lt;/a&gt; 这是一个四级标题&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;这是第一行列表项&lt;/li&gt;
+&lt;li&gt;这是第二行列表项&lt;br&gt;
+效果如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这是一段引用&lt;/p&gt;
+&lt;p&gt;这是引用的代码块形式    // 在 &lt;code&gt;&amp;gt;&lt;/code&gt;  后面有 5 个空格&lt;br&gt;
+代码例子：&lt;/p&gt;
+&lt;p&gt;protected void onCreate(Bundle savedInstanceState) {&lt;br&gt;
+super.onCreate(savedInstanceState);&lt;br&gt;
+setContentView(R.layout.activity_main);&lt;br&gt;
+}&lt;br&gt;
+ 一级引用&lt;/p&gt;
+&lt;p&gt;二级引用&lt;/p&gt;
+&lt;p&gt;三级引用&lt;/p&gt;
+&lt;p&gt;这是一个四级标题&lt;br&gt;
+这是第一行列表项&lt;br&gt;
+这是第二行列表项&lt;br&gt;
+以下是分割线&lt;/p&gt;
+&lt;p&gt;强调&lt;br&gt;
+两个&lt;em&gt;或 - 代表加粗，一个&lt;/em&gt;或 - 代表斜体，~~ 代表删除。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;加粗文本&lt;/strong&gt; 或者 &lt;strong&gt;加粗文本&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;斜体文本&lt;/em&gt;  或者_斜体文本_&lt;/p&gt;
+&lt;p&gt;&lt;s&gt;删除文本&lt;/s&gt;&lt;br&gt;
+效果如下：&lt;/p&gt;
+&lt;p&gt;加粗文本 或者 加粗文本&lt;/p&gt;
+&lt;p&gt;斜体文本 或者 斜体文本&lt;/p&gt;
+&lt;p&gt;删除文本&lt;/p&gt;
+&lt;p&gt;图片与链接&lt;br&gt;
+图片与链接的语法很像，区别在一个！号。二者格式：&lt;/p&gt;
+&lt;p&gt;图片：&lt;img src=&#34;&#34; alt=&#34;&#34;&gt;    &lt;img src=&#34;%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80&#34; alt=&#34;图片文本(可忽略)&#34;&gt;&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&#34;&#34;&gt;&lt;/a&gt;     &lt;a href=&#34;%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80&#34;&gt;链接文本&lt;/a&gt;&lt;br&gt;
+链接又分为行内式、参考式和 自动链接：&lt;/p&gt;
+&lt;p&gt;这是行内式链接：&lt;a href=&#34;http://connorlin.github.io&#34;&gt;ConnorLin’s Blog&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;这是参考式链接：&lt;a href=&#34;http://connorlin.github.io/&#34; title=&#34;ConnorLin&#39;s Blog&#34;&gt;ConnorLin’s Blog&lt;/a&gt;，其中 url 为链接标记，可置于文中任意位置。&lt;/p&gt;
+&lt;p&gt;链接标记格式为：[链接标记文本]:  链接地址  链接 title (可忽略)&lt;/p&gt;
+&lt;p&gt;这是自动链接：直接使用 &lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;  括起来&lt;a href=&#34;http://connorlin.github.io&#34;&gt; http://connorlin.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这是图片：&lt;img src=&#34;https://connorlin.github.io/images/avatar.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;代码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码&#34;&gt;#&lt;/a&gt; 代码&lt;/h2&gt;
+&lt;p&gt;代码分为行内代码和代码块。&lt;/p&gt;
+&lt;p&gt;行内代码使用  &lt;code&gt;代码&lt;/code&gt;  标识，可嵌入文字中&lt;/p&gt;
+&lt;p&gt;代码块使用 4 个空格或 ``` 标识&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;这里是代码&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;代码语法高亮在 ``` 后面加上空格和语言名称即可&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;//注意语言前面有空格&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;这里是代码&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;p&gt;这是行内代码 &lt;code&gt;onCreate(Bundle savedInstanceState)&lt;/code&gt;  的例子。&lt;/p&gt;
+&lt;p&gt;这是代码块和语法高亮：&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 注意java前面有空格&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;onCreate&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(Bundle savedInstanceState)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    setContentView(R.layout.activity_main);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;p&gt;这是行内代码 onCreate (Bundle savedInstanceState) 的例子。&lt;/p&gt;
+&lt;p&gt;这是代码块和语法高亮：&lt;/p&gt;
+&lt;p&gt;// 注意 java 前面有空格&lt;br&gt;
+ protected void onCreate (Bundle savedInstanceState) {&lt;br&gt;
+super.onCreate(savedInstanceState);&lt;br&gt;
+setContentView(R.layout.activity_main);&lt;br&gt;
+}&lt;br&gt;
+ 表格&lt;br&gt;
+表格对齐格式&lt;/p&gt;
+&lt;p&gt;居左：:----&lt;br&gt;
+ 居中：:----: 或 -----&lt;br&gt;
+ 居右：----:&lt;br&gt;
+ 例子：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;标题&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;标题&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;标题&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;居左测试文本&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;居中测试文本&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;居右测试文本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;居左测试文本 1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;居中测试文本 2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;居右测试文本 3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;居左测试文本 11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;居中测试文本 22&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;居右测试文本 33&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;居左测试文本 111&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;居中测试文本 222&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;居右测试文本 333&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;p&gt;标题	标题	标题&lt;br&gt;
+居左测试文本	居中测试文本	居右测试文本&lt;br&gt;
+居左测试文本 1	居中测试文本 2	居右测试文本 3&lt;br&gt;
+ 居左测试文本 11	居中测试文本 22	居右测试文本 33&lt;br&gt;
+ 居左测试文本 111	居中测试文本 222	居右测试文本 333&lt;br&gt;
+ 分隔线&lt;br&gt;
+在一行中用三个以上的 *、-、_来建立一个分隔线，行内不能有其他东西。也可以在符号间插入空格。&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;***&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;___&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;* * *&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;效果:&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt;效果均为一条分割线：&lt;/p&gt;
+&lt;p&gt;换行&lt;br&gt;
+在行尾添加两个空格加回车表示换行：&lt;/p&gt;
+&lt;p&gt;这是一行后面加两个空格  换行&lt;br&gt;
+效果如下：&lt;/p&gt;
+&lt;p&gt;这是一行后面加两个空格&lt;br&gt;
+换行&lt;/p&gt;
+&lt;p&gt;脚注 (注解)&lt;br&gt;
+ 使用 [^] 来定义脚注：&lt;/p&gt;
+&lt;p&gt;这是一个脚注的例子&lt;sup class=&#34;footnote-ref&#34;&gt;&lt;a href=&#34;#fn1&#34; id=&#34;fnref1&#34;&gt;[1]&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;这是一个脚注的例子 [1]&lt;/p&gt;
+&lt;p&gt;常用弥补 Markdown 的 Html 标签&lt;br&gt;
+字体&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;font face=&amp;quot;微软雅黑&amp;quot; color=&amp;quot;red&amp;quot; size=&amp;quot;6&amp;quot;&amp;gt;字体及字体颜色和大小&amp;lt;/font&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;font color=&amp;quot;#0000ff&amp;quot;&amp;gt;字体颜色&amp;lt;/font&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;p&gt;&lt;font face=&#34;微软雅黑&#34; color=&#34;red&#34; size=&#34;6&#34;&gt;字体及字体颜色和大小&lt;/font&gt;&lt;br&gt;
+&lt;font color=&#34;#0000ff&#34;&gt;字体颜色&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;换行&lt;br&gt;
+使用 html 标签 &lt;code&gt;&amp;lt;br/&amp;gt;&lt;/code&gt; &lt;br/&gt;换行&lt;/p&gt;
+&lt;p&gt;文本对齐方式&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;p align=&amp;quot;left&amp;quot;&amp;gt;居左文本&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;p align=&amp;quot;center&amp;quot;&amp;gt;居中文本&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;居右文本&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;p align=&#34;left&#34;&gt;居左文本&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;居中文本&lt;/p&gt;
+&lt;p align=&#34;right&#34;&gt;居右文本&lt;/p&gt;
+&lt;p&gt;下划线&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;u&amp;gt;下划线文本&amp;lt;/u&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;下划线文本&lt;/u&gt;&lt;/p&gt;
+&lt;hr class=&#34;footnotes-sep&#34;&gt;
+&lt;section class=&#34;footnotes&#34;&gt;
+&lt;ol class=&#34;footnotes-list&#34;&gt;
+&lt;li id=&#34;fn1&#34; class=&#34;footnote-item&#34;&gt;&lt;p&gt;这里是脚注&lt;br&gt;
+效果如下： &lt;a href=&#34;#fnref1&#34; class=&#34;footnote-backref&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+        <category term="教程" />
+        <category term="Markdown语法" />
+        <updated>2022-05-29T14:36:02.000Z</updated>
     </entry>
     <entry>
         <id>https://my.durtime.top/posts/55bce094/</id>
@@ -1165,6 +1409,6 @@ allow all;&lt;br&gt;
 </content>
         <category term="教程" />
         <category term="Docker" />
-        <updated>2020-05-28T14:31:46.000Z</updated>
+        <updated>2022-05-28T14:31:46.000Z</updated>
     </entry>
 </feed>

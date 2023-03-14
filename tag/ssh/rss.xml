@@ -5,23 +5,30 @@
         <link>https://my.durtime.top</link>
         <description>The aroma of black tea no longer exists</description>
         <language>zh-CN</language>
-        <pubDate>Thu, 23 Feb 2023 22:40:01 +0800</pubDate>
-        <lastBuildDate>Thu, 23 Feb 2023 22:40:01 +0800</lastBuildDate>
+        <pubDate>Thu, 09 Mar 2023 12:34:41 +0800</pubDate>
+        <lastBuildDate>Thu, 09 Mar 2023 12:34:41 +0800</lastBuildDate>
         <category>教程</category>
         <category>Hexo</category>
         <category>主題</category>
         <category>butterfly</category>
         <category>Aplayer</category>
         <category>Docker</category>
+        <category>Markdown语法</category>
+        <category>推荐</category>
+        <category>算法</category>
+        <category>大数据</category>
         <category>nginx</category>
         <category>ssh</category>
+        <category>hadoop</category>
+        <category>Ip</category>
+        <category>运维</category>
         <item>
             <guid isPermalink="true">https://my.durtime.top/posts/2bee8b90/</guid>
             <title>Win10 ssh</title>
             <link>https://my.durtime.top/posts/2bee8b90/</link>
             <category>教程</category>
             <category>ssh</category>
-            <pubDate>Thu, 23 Feb 2023 22:40:01 +0800</pubDate>
+            <pubDate>Thu, 09 Mar 2023 12:34:41 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;配置过程&lt;/p&gt;
 &lt;h2 id=&#34;1-首先生成密钥对&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-首先生成密钥对&#34;&gt;#&lt;/a&gt; 1. 首先生成密钥对&lt;/h2&gt;
 &lt;p&gt;ssh-keygen -t rsa   #-t 表示类型选项，这里采用 rsa 加密算法&lt;/p&gt;

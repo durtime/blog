@@ -13,8 +13,15 @@
         <category>butterfly</category>
         <category>Aplayer</category>
         <category>Docker</category>
+        <category>Markdown语法</category>
+        <category>推荐</category>
+        <category>算法</category>
+        <category>大数据</category>
         <category>nginx</category>
         <category>ssh</category>
+        <category>hadoop</category>
+        <category>Ip</category>
+        <category>运维</category>
         <item>
             <guid isPermalink="true">https://my.durtime.top/posts/ceeb73f/</guid>
             <title>Butterfly 安裝文檔(四) 主題配置-2</title>

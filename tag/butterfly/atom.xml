@@ -10,8 +10,15 @@
     <category term="butterfly" />
     <category term="Aplayer" />
     <category term="Docker" />
+    <category term="Markdown语法" />
+    <category term="推荐" />
+    <category term="算法" />
+    <category term="大数据" />
     <category term="nginx" />
     <category term="ssh" />
+    <category term="hadoop" />
+    <category term="Ip" />
+    <category term="运维" />
     <entry>
         <id>https://my.durtime.top/posts/0/</id>
         <title>Butterfly添加全局吸底Aplayer教程</title>

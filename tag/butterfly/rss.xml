@@ -13,8 +13,15 @@
         <category>butterfly</category>
         <category>Aplayer</category>
         <category>Docker</category>
+        <category>Markdown语法</category>
+        <category>推荐</category>
+        <category>算法</category>
+        <category>大数据</category>
         <category>nginx</category>
         <category>ssh</category>
+        <category>hadoop</category>
+        <category>Ip</category>
+        <category>运维</category>
         <item>
             <guid isPermalink="true">https://my.durtime.top/posts/0/</guid>
             <title>Butterfly添加全局吸底Aplayer教程</title>
