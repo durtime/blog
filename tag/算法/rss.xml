@@ -55,11 +55,11 @@ TF-IDF 的思想比较简单，但是却非常实用。然而这种方法还是�
 &lt;p&gt;用统计学语言表达，就是在词频的基础上，要对每个词分配一个 &amp;quot;重要性&amp;quot; 权重。最常见的词（“的”、“是”、“在”）给予最小的权重，较常见的词（“中国”）给予较小的权重，较少见的词（“蜜蜂”、“养殖”）给予较大的权重。这个权重叫做 &amp;quot;逆文档频率&amp;quot;（Inverse Document Frequency，缩写为 IDF），它的大小与一个词的常见程度成反比。&lt;/p&gt;
 &lt;p&gt;知道了 &amp;quot;词频&amp;quot;（TF）和 &amp;quot;逆文档频率&amp;quot;（IDF）以后，将这两个值相乘，就得到了一个词的 TF-IDF 值。某个词对文章的重要性越高，它的 TF-IDF 值就越大。所以，排在最前面的几个词，就是这篇文章的关键词。&lt;/p&gt;
 &lt;h1 id=&#34;算法的细节&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#算法的细节&#34;&gt;#&lt;/a&gt; 算法的细节&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;/assets/Snipaste_2023-02-26_13-21-36.png&#34; alt=&#34;算法的细节&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/assets/Snipaste_2023-02-26_13-24-00.png&#34; alt=&#34;算法的细节&#34;&gt;&lt;br&gt;
+&lt;p&gt;&lt;img src=&#34;../assets/Snipaste_2023-02-26_13-21-36.png&#34; alt=&#34;算法的细节&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../assets/Snipaste_2023-02-26_13-24-00.png&#34; alt=&#34;算法的细节&#34;&gt;&lt;br&gt;
 可以看到，TF-IDF 与一个词在文档中的出现次数成正比，与该词在整个语言中的出现次数成反比。所以，自动提取关键词的算法就很清楚了，就是计算出文档的每个词的 TF-IDF 值，然后按降序排列，取排在最前面的几个词。&lt;/p&gt;
 &lt;p&gt;还是以《中国的蜜蜂养殖》为例，假定该文长度为 1000 个词，“中国”、“蜜蜂”、“养殖 &amp;quot;各出现 20 次，则这三个词的&amp;quot; 词频”（TF）都为 0.02。然后，搜索 Google 发现，包含 &amp;quot;的&amp;quot; 字的网页共有 250 亿张，假定这就是中文网页总数。包含 &amp;quot;中国&amp;quot; 的网页共有 62.3 亿张，包含 &amp;quot;蜜蜂&amp;quot; 的网页为 0.484 亿张，包含 &amp;quot;养殖&amp;quot; 的网页为 0.973 亿张。则它们的逆文档频率（IDF）和 TF-IDF 如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/assets/Snipaste_2023-02-26_13-24-41.png&#34; alt=&#34;算法的细节&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../assets/Snipaste_2023-02-26_13-24-41.png&#34; alt=&#34;算法的细节&#34;&gt;&lt;/p&gt;
 &lt;p&gt;log (250 亿 /（62.3 亿 + 1）) 约等于 0.603&lt;br&gt;
  “中国” 这个词的词频怎么算的就不知道了&lt;/p&gt;
 &lt;p&gt;从上表可见，&amp;quot;蜜蜂&amp;quot; 的 TF-IDF 值最高，&amp;quot;养殖&amp;quot; 其次，&amp;quot;中国&amp;quot; 最低。（如果还计算 &amp;quot;的&amp;quot; 字的 TF-IDF，那将是一个极其接近 0 的值。）所以，如果只选择一个词，&amp;quot;蜜蜂&amp;quot; 就是这篇文章的关键词。&lt;/p&gt;
