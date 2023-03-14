@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Durtime • Posts by &#34;教程&#34; category</title>
-        <link>https://durtime.github.io/blog</link>
+        <link>https://my.durtime.top</link>
         <description>The aroma of black tea no longer exists</description>
         <language>zh-CN</language>
         <pubDate>Thu, 09 Mar 2023 12:34:41 +0800</pubDate>
@@ -23,9 +23,9 @@
         <category>Ip</category>
         <category>运维</category>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/2bee8b90/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/2bee8b90/</guid>
             <title>Win10 ssh</title>
-            <link>https://durtime.github.io/blog/posts/2bee8b90/</link>
+            <link>https://my.durtime.top/posts/2bee8b90/</link>
             <category>教程</category>
             <category>ssh</category>
             <pubDate>Thu, 09 Mar 2023 12:34:41 +0800</pubDate>
@@ -44,9 +44,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/57ee7c1d/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/57ee7c1d/</guid>
             <title>Hexo搭建</title>
-            <link>https://durtime.github.io/blog/posts/57ee7c1d/</link>
+            <link>https://my.durtime.top/posts/57ee7c1d/</link>
             <category>教程</category>
             <category>Hexo</category>
             <pubDate>Thu, 23 Feb 2023 22:05:12 +0800</pubDate>
@@ -100,9 +100,9 @@ hexo deploy&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/2bee8b90/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/2bee8b90/</guid>
             <title>nginx配置</title>
-            <link>https://durtime.github.io/blog/posts/2bee8b90/</link>
+            <link>https://my.durtime.top/posts/2bee8b90/</link>
             <category>教程</category>
             <category>nginx</category>
             <pubDate>Mon, 13 Feb 2023 09:34:41 +0800</pubDate>
@@ -432,9 +432,9 @@ allow all;&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/0/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/0/</guid>
             <title>Butterfly添加全局吸底Aplayer教程</title>
-            <link>https://durtime.github.io/blog/posts/0/</link>
+            <link>https://my.durtime.top/posts/0/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>
@@ -573,9 +573,9 @@ allow all;&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/3c50d03d/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/3c50d03d/</guid>
             <title>Markdown语法</title>
-            <link>https://durtime.github.io/blog/posts/3c50d03d/</link>
+            <link>https://my.durtime.top/posts/3c50d03d/</link>
             <category>教程</category>
             <category>Markdown语法</category>
             <pubDate>Sun, 29 May 2022 22:36:02 +0800</pubDate>
@@ -810,9 +810,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/55bce094/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/55bce094/</guid>
             <title>Docker实用篇</title>
-            <link>https://durtime.github.io/blog/posts/55bce094/</link>
+            <link>https://my.durtime.top/posts/55bce094/</link>
             <category>教程</category>
             <category>Docker</category>
             <pubDate>Sat, 28 May 2022 22:31:46 +0800</pubDate>

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://durtime.github.io/blog</id>
+    <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;markdown语法&#34; tag</title>
-    <link href="https://durtime.github.io/blog" />
+    <link href="https://my.durtime.top" />
     <updated>2022-05-29T14:36:02.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://durtime.github.io/blog/posts/3c50d03d/</id>
+        <id>https://my.durtime.top/posts/3c50d03d/</id>
         <title>Markdown语法</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/3c50d03d/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/3c50d03d/"/>
         <content type="html">&lt;h1 id=&#34;简介&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h1&gt;
 &lt;p&gt;Markdown 是一种轻量级标记语言，它用简洁的语法代替排版，使我们专心于码字。它的目标是实现易读易写，成为一种适用于网络的书写语言。同时，Markdown 支持嵌入 html 标签。&lt;/p&gt;
 &lt;p&gt;&lt;u&gt;注意：Markdown 使用 #、+、* 等符号来标记， 符号后面必须跟上 至少 1 个 空格才有效！&lt;/u&gt;&lt;/p&gt;

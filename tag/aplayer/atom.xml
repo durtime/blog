@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://durtime.github.io/blog</id>
+    <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;aplayer&#34; tag</title>
-    <link href="https://durtime.github.io/blog" />
+    <link href="https://my.durtime.top" />
     <updated>2022-07-31T11:02:28.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://durtime.github.io/blog/posts/0/</id>
+        <id>https://my.durtime.top/posts/0/</id>
         <title>Butterfly添加全局吸底Aplayer教程</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/0/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/0/"/>
         <content type="html">&lt;div class=&#34;note info flat&#34;&gt;&lt;p&gt;以下文章只是教程&lt;/p&gt;
 &lt;p&gt;如果部署之后，并没有出现 aplayer , 请确认是否跟足步骤操作或者更换音乐源，多试试。&lt;/p&gt;
 &lt;p&gt;如果遇到使用問題，请仔细查看插件文档，或者到插件那裏反饋。&lt;/p&gt;

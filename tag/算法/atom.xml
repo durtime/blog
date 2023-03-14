@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://durtime.github.io/blog</id>
+    <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;算法&#34; tag</title>
-    <link href="https://durtime.github.io/blog" />
+    <link href="https://my.durtime.top" />
     <updated>2023-03-10T01:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://durtime.github.io/blog/posts/c4e7614/</id>
+        <id>https://my.durtime.top/posts/c4e7614/</id>
         <title>Tf-idf算法</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/c4e7614/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/c4e7614/"/>
         <content type="html">&lt;h1 id=&#34;什么是-tf-idf-算法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#什么是-tf-idf-算法&#34;&gt;#&lt;/a&gt; 什么是 TF-IDF 算法？&lt;/h1&gt;
 &lt;p&gt;TF（全称 TermFrequency），中文含义词频，简单理解就是关键词出现在网页当中的频次。&lt;/p&gt;
 &lt;p&gt;IDF（全称 InverseDocumentFrequency），中文含义逆文档频率，简单来说就是该关键词出现在所有文档里面的一种数据集合。&lt;/p&gt;

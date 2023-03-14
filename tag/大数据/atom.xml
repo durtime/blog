@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://durtime.github.io/blog</id>
+    <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;大数据&#34; tag</title>
-    <link href="https://durtime.github.io/blog" />
+    <link href="https://my.durtime.top" />
     <updated>2023-03-12T01:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://durtime.github.io/blog/posts/1fd8e8b9/</id>
+        <id>https://my.durtime.top/posts/1fd8e8b9/</id>
         <title>推荐业务(一)</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/1fd8e8b9/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/1fd8e8b9/"/>
         <content type="html">&lt;h1 id=&#34;1-离线画像业务&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-离线画像业务&#34;&gt;#&lt;/a&gt; 1 离线画像业务&lt;/h1&gt;
 &lt;p&gt;画像的构建作为推荐系统非常重要的环节，画像可以作为整个产品的推荐或者营销重要依据。需要通过各种方法来构建。&lt;/p&gt;
 &lt;p&gt;文章内容标签化：内容标签化，根据内容定性的制定一系列标签，这些标签可以是描述性标签。针对于文章就是文章相关的内容词语。&lt;/p&gt;
@@ -64,9 +64,9 @@ TF-IDF = 某文档中某词或字出现的次数 / 该文档的总字数或总�
         <updated>2023-03-12T01:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://durtime.github.io/blog/posts/c4e7614/</id>
+        <id>https://my.durtime.top/posts/c4e7614/</id>
         <title>Tf-idf算法</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/c4e7614/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/c4e7614/"/>
         <content type="html">&lt;h1 id=&#34;什么是-tf-idf-算法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#什么是-tf-idf-算法&#34;&gt;#&lt;/a&gt; 什么是 TF-IDF 算法？&lt;/h1&gt;
 &lt;p&gt;TF（全称 TermFrequency），中文含义词频，简单理解就是关键词出现在网页当中的频次。&lt;/p&gt;
 &lt;p&gt;IDF（全称 InverseDocumentFrequency），中文含义逆文档频率，简单来说就是该关键词出现在所有文档里面的一种数据集合。&lt;/p&gt;
@@ -118,9 +118,9 @@ TF-IDF 的思想比较简单，但是却非常实用。然而这种方法还是�
         <updated>2023-03-10T01:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://durtime.github.io/blog/posts/65ad05d8/</id>
+        <id>https://my.durtime.top/posts/65ad05d8/</id>
         <title>一梦文章推荐业务(一)</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/65ad05d8/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/65ad05d8/"/>
         <content type="html">&lt;h1 id=&#34;1-数据库迁移需求&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-数据库迁移需求&#34;&gt;#&lt;/a&gt; 1 数据库迁移需求&lt;/h1&gt;
 &lt;p&gt;业务 mysql 数据库中的数据，会同步到我们的 hadoop 的 hive 数据仓库中。&lt;/p&gt;
 &lt;ul&gt;

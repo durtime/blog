@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Durtime</title>
-        <link>https://durtime.github.io/blog</link>
+        <link>https://my.durtime.top</link>
         <description>The aroma of black tea no longer exists</description>
         <language>zh-CN</language>
         <pubDate>Mon, 13 Mar 2023 09:34:41 +0800</pubDate>
@@ -23,9 +23,9 @@
         <category>Ip</category>
         <category>运维</category>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/aeafe6b5/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/aeafe6b5/</guid>
             <title>系统接入访问量统计</title>
-            <link>https://durtime.github.io/blog/posts/aeafe6b5/</link>
+            <link>https://my.durtime.top/posts/aeafe6b5/</link>
             <category>Ip</category>
             <category>运维</category>
             <pubDate>Mon, 13 Mar 2023 09:34:41 +0800</pubDate>
@@ -57,9 +57,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/1fd8e8b9/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/1fd8e8b9/</guid>
             <title>推荐业务(一)</title>
-            <link>https://durtime.github.io/blog/posts/1fd8e8b9/</link>
+            <link>https://my.durtime.top/posts/1fd8e8b9/</link>
             <category>推荐</category>
             <category>大数据</category>
             <category>hadoop</category>
@@ -101,9 +101,9 @@ TF-IDF = 某文档中某词或字出现的次数 / 该文档的总字数或总�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/c4e7614/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/c4e7614/</guid>
             <title>Tf-idf算法</title>
-            <link>https://durtime.github.io/blog/posts/c4e7614/</link>
+            <link>https://my.durtime.top/posts/c4e7614/</link>
             <category>推荐</category>
             <category>算法</category>
             <category>大数据</category>
@@ -155,9 +155,9 @@ TF-IDF 的思想比较简单，但是却非常实用。然而这种方法还是�
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;from sklearn.feature_extraction.text import TfidfVectorizer&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;tfidf_vec = TfidfVectorizer()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# stop words自定义停用词表，为列表List类型&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# token_pattern过滤规则，正则表达式，如r&amp;quot;(?u)bw+b&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# max_df=0.5，代表一个单词在 50% 的文档中都出现过了，那么它只携带了非常少的信息，因此就不作为分词统计&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;documents = [&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x27;this is the bayes document&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x27;this is the second second document&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x27;and the third one&amp;#x27;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#x27;is this the document&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;tfidf_matrix = tfidf_vec.fit_transform(documents)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# 拟合模型，并返回文本矩阵  表示了每个单词在每个文档中的 TF-IDF 值&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;输出每个单词在每个文档中的 TF-IDF 值，向量里的顺序是按照词语的 id 顺序来的:&amp;#x27;, &amp;#x27;\n&amp;#x27;, tfidf_matrix.toarray())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;不重复的词:&amp;#x27;, tfidf_vec.get_feature_names())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;输出每个单词对应的 id 值:&amp;#x27;, tfidf_vec.vocabulary_)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;返回idf值:&amp;#x27;, tfidf_vec.idf_)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;print(&amp;#x27;返回停用词表:&amp;#x27;, tfidf_vec.stop_words_)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/2bee8b90/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/2bee8b90/</guid>
             <title>Win10 ssh</title>
-            <link>https://durtime.github.io/blog/posts/2bee8b90/</link>
+            <link>https://my.durtime.top/posts/2bee8b90/</link>
             <category>教程</category>
             <category>ssh</category>
             <pubDate>Thu, 09 Mar 2023 12:34:41 +0800</pubDate>
@@ -176,9 +176,9 @@ TF-IDF 的思想比较简单，但是却非常实用。然而这种方法还是�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/57ee7c1d/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/57ee7c1d/</guid>
             <title>Hexo搭建</title>
-            <link>https://durtime.github.io/blog/posts/57ee7c1d/</link>
+            <link>https://my.durtime.top/posts/57ee7c1d/</link>
             <category>教程</category>
             <category>Hexo</category>
             <pubDate>Thu, 23 Feb 2023 22:05:12 +0800</pubDate>
@@ -232,9 +232,9 @@ hexo deploy&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/2bee8b90/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/2bee8b90/</guid>
             <title>nginx配置</title>
-            <link>https://durtime.github.io/blog/posts/2bee8b90/</link>
+            <link>https://my.durtime.top/posts/2bee8b90/</link>
             <category>教程</category>
             <category>nginx</category>
             <pubDate>Mon, 13 Feb 2023 09:34:41 +0800</pubDate>
@@ -564,9 +564,9 @@ allow all;&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/0/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/0/</guid>
             <title>Butterfly添加全局吸底Aplayer教程</title>
-            <link>https://durtime.github.io/blog/posts/0/</link>
+            <link>https://my.durtime.top/posts/0/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>
@@ -705,9 +705,9 @@ allow all;&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/undefined/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/undefined/</guid>
             <title>在 Ubuntu 14.04 服务器上部署 Hexo 博客</title>
-            <link>https://durtime.github.io/blog/posts/undefined/</link>
+            <link>https://my.durtime.top/posts/undefined/</link>
             <pubDate>Tue, 07 Jun 2022 22:15:37 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;导语&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#导语&#34;&gt;#&lt;/a&gt; 导语&lt;/h2&gt;
 &lt;p&gt;除了闷头专研技术之外，程序员还需要不断地写作进行技术积累，写博客是其中最重要的方式之一。商业博客平台不少，但是更符合程序员背景的方案，是自己开发一个博客平台或者使用开源的博客平台。&lt;/p&gt;
@@ -856,9 +856,9 @@ allow all;&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/3c50d03d/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/3c50d03d/</guid>
             <title>Markdown语法</title>
-            <link>https://durtime.github.io/blog/posts/3c50d03d/</link>
+            <link>https://my.durtime.top/posts/3c50d03d/</link>
             <category>教程</category>
             <category>Markdown语法</category>
             <pubDate>Sun, 29 May 2022 22:36:02 +0800</pubDate>
@@ -1093,9 +1093,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/65ad05d8/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/65ad05d8/</guid>
             <title>一梦文章推荐业务(一)</title>
-            <link>https://durtime.github.io/blog/posts/65ad05d8/</link>
+            <link>https://my.durtime.top/posts/65ad05d8/</link>
             <category>推荐</category>
             <category>大数据</category>
             <category>hadoop</category>
@@ -1128,9 +1128,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;# 词语与词频统计&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;from pyspark.ml.feature import CountVectorizer&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# 总词汇的大小，文本中必须出现的次数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;cv = CountVectorizer(inputCol=&amp;quot;words&amp;quot;, outputCol=&amp;quot;countFeatures&amp;quot;, vocabSize=200*10000, minDF=1.0)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;# 训练词频统计模型&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;cv_model = cv.fit(words_df)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;cv_model.write().overwrite().save(&amp;quot;hdfs://hadoop-master:9000/headlines/models/CV.model&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/55bce094/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/55bce094/</guid>
             <title>Docker实用篇</title>
-            <link>https://durtime.github.io/blog/posts/55bce094/</link>
+            <link>https://my.durtime.top/posts/55bce094/</link>
             <category>教程</category>
             <category>Docker</category>
             <pubDate>Sat, 28 May 2022 22:31:46 +0800</pubDate>
@@ -1733,9 +1733,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/ceeb73f/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/ceeb73f/</guid>
             <title>Butterfly 安裝文檔(四) 主題配置-2</title>
-            <link>https://durtime.github.io/blog/posts/ceeb73f/</link>
+            <link>https://my.durtime.top/posts/ceeb73f/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>
@@ -2579,9 +2579,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/36a80a35/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/36a80a35/</guid>
             <title>Butterfly 安裝文檔(三) 主題配置-1</title>
-            <link>https://durtime.github.io/blog/posts/36a80a35/</link>
+            <link>https://my.durtime.top/posts/36a80a35/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>
@@ -3897,9 +3897,9 @@ This is my website, click the button &lt;a class=&#34;btn-beautify larger&#34; h
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/956161ca/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/956161ca/</guid>
             <title>Butterfly 安裝文檔(二) 主題頁面</title>
-            <link>https://durtime.github.io/blog/posts/956161ca/</link>
+            <link>https://my.durtime.top/posts/956161ca/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>
@@ -4236,9 +4236,9 @@ This is my website, click the button &lt;a class=&#34;btn-beautify larger&#34; h
   title=&#34;🛠 Butterfly 安裝文檔(三) 主題配置&#34;&gt;&lt;i class=&#34;far fa-hand-point-right&#34;&gt;&lt;/i&gt;&lt;span&gt;🛠 Butterfly 安裝文檔(三) 主題配置&lt;/span&gt;&lt;/a&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://durtime.github.io/blog/posts/8e33c3e1/</guid>
+            <guid isPermalink="true">https://my.durtime.top/posts/8e33c3e1/</guid>
             <title>Butterfly 安裝文檔(一) 快速開始</title>
-            <link>https://durtime.github.io/blog/posts/8e33c3e1/</link>
+            <link>https://my.durtime.top/posts/8e33c3e1/</link>
             <category>教程</category>
             <category>Hexo</category>
             <category>主題</category>

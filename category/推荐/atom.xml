@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://durtime.github.io/blog</id>
+    <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;推荐&#34; category</title>
-    <link href="https://durtime.github.io/blog" />
+    <link href="https://my.durtime.top" />
     <updated>2023-03-13T01:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://durtime.github.io/blog/posts/aeafe6b5/</id>
+        <id>https://my.durtime.top/posts/aeafe6b5/</id>
         <title>系统接入访问量统计</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/aeafe6b5/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/aeafe6b5/"/>
         <content type="html">&lt;h1 id=&#34;集成ip2region实现离线ip地址定位&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#集成ip2region实现离线ip地址定位&#34;&gt;#&lt;/a&gt; 集成 ip2region 实现离线 IP 地址定位&lt;/h1&gt;
 &lt;p&gt;离线 IP 地址定位库主要用于内网或想减少对外访问 http 带来的资源消耗。（代码已兼容支持 jar 包部署）&lt;/p&gt;
 &lt;h2 id=&#34;1-引入依赖&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-引入依赖&#34;&gt;#&lt;/a&gt; 1、引入依赖&lt;/h2&gt;

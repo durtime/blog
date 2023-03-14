@@ -2,11 +2,11 @@
     "version": "https://jsonfeed.org/version/1",
     "title": "Durtime • All posts by \"ssh\" tag",
     "description": "The aroma of black tea no longer exists",
-    "home_page_url": "https://durtime.github.io/blog",
+    "home_page_url": "https://my.durtime.top",
     "items": [
         {
-            "id": "https://durtime.github.io/blog/posts/2bee8b90/",
-            "url": "https://durtime.github.io/blog/posts/2bee8b90/",
+            "id": "https://my.durtime.top/posts/2bee8b90/",
+            "url": "https://my.durtime.top/posts/2bee8b90/",
             "title": "Win10 ssh",
             "date_published": "2023-03-09T04:34:41.000Z",
             "content_html": "<p>配置过程</p>\n<h2 id=\"1-首先生成密钥对\"><a class=\"markdownIt-Anchor\" href=\"#1-首先生成密钥对\">#</a> 1. 首先生成密钥对</h2>\n<p>ssh-keygen -t rsa   #-t 表示类型选项，这里采用 rsa 加密算法</p>\n<h2 id=\"2-上传公钥\"><a class=\"markdownIt-Anchor\" href=\"#2-上传公钥\">#</a> 2. 上传公钥</h2>\n<p>ssh-copy-id <a href=\"mailto:root@192.168.0.1\">root@192.168.0.1</a><br>\n 遇到问题<br>\n在 windows10 上配置时，会遇到如下错误：</p>\n<p>ssh-copy-id : 无法将 “ssh-copy-id” 项识别为 cmdlet、函数、脚本文件或可运行程序的名称。</p>\n<p>解决方案是在 powershell 中，先执行以下内容：</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br><span class=\"line\">9</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">function ssh-copy-id([string]$userAtMachine, $args)&#123;   </span><br><span class=\"line\">    $publicKey = &quot;$ENV:USERPROFILE&quot; + &quot;/.ssh/id_rsa.pub&quot;</span><br><span class=\"line\">    if (!(Test-Path &quot;$publicKey&quot;))&#123;</span><br><span class=\"line\">        Write-Error &quot;ERROR: failed to open ID file &#x27;$publicKey&#x27;: No such file&quot;            </span><br><span class=\"line\">    &#125;</span><br><span class=\"line\">    else &#123;</span><br><span class=\"line\">        &amp; cat &quot;$publicKey&quot; | ssh $args $userAtMachine &quot;umask 077; test -d .ssh || mkdir .ssh ; cat &gt;&gt; .ssh/authorized_keys || exit 1&quot;      </span><br><span class=\"line\">    &#125;</span><br><span class=\"line\">&#125;</span><br></pre></td></tr></table></figure>\n<h2 id=\"3测试\"><a class=\"markdownIt-Anchor\" href=\"#3测试\">#</a> 3. 测试</h2>\n<p>ssh root@公网 IP</p>\n",

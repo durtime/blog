@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://durtime.github.io/blog</id>
+    <id>https://my.durtime.top</id>
     <title>Durtime • Posts by &#34;教程&#34; category</title>
-    <link href="https://durtime.github.io/blog" />
+    <link href="https://my.durtime.top" />
     <updated>2023-03-09T04:34:41.000Z</updated>
     <category term="教程" />
     <category term="Hexo" />
@@ -20,9 +20,9 @@
     <category term="Ip" />
     <category term="运维" />
     <entry>
-        <id>https://durtime.github.io/blog/posts/2bee8b90/</id>
+        <id>https://my.durtime.top/posts/2bee8b90/</id>
         <title>Win10 ssh</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/2bee8b90/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/2bee8b90/"/>
         <content type="html">&lt;p&gt;配置过程&lt;/p&gt;
 &lt;h2 id=&#34;1-首先生成密钥对&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-首先生成密钥对&#34;&gt;#&lt;/a&gt; 1. 首先生成密钥对&lt;/h2&gt;
 &lt;p&gt;ssh-keygen -t rsa   #-t 表示类型选项，这里采用 rsa 加密算法&lt;/p&gt;
@@ -41,9 +41,9 @@
         <updated>2023-03-09T04:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://durtime.github.io/blog/posts/57ee7c1d/</id>
+        <id>https://my.durtime.top/posts/57ee7c1d/</id>
         <title>Hexo搭建</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/57ee7c1d/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/57ee7c1d/"/>
         <content type="html">&lt;h1 id=&#34;github-部署&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#github-部署&#34;&gt;#&lt;/a&gt; GitHub 部署&lt;/h1&gt;
 &lt;p&gt;npm install hexo-deployer-git --save&lt;/p&gt;
 &lt;p&gt;deploy:&lt;br&gt;
@@ -97,9 +97,9 @@ hexo deploy&lt;/p&gt;
         <updated>2023-02-23T14:05:12.001Z</updated>
     </entry>
     <entry>
-        <id>https://durtime.github.io/blog/posts/2bee8b90/</id>
+        <id>https://my.durtime.top/posts/2bee8b90/</id>
         <title>nginx配置</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/2bee8b90/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/2bee8b90/"/>
         <content type="html">&lt;h1 id=&#34;nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nginxlocation常见配置指令alias-root-proxy_pass-路径问题&#34;&gt;#&lt;/a&gt; Nginx——location 常见配置指令，alias、root、proxy_pass 路径问题&lt;/h1&gt;
 &lt;p&gt;1.【alias】&lt;/p&gt;
 &lt;p&gt;别名配置，用于访问文件系统，在匹配到 location 配置的 URL 路径后，指向【alias】配置的路径。如：&lt;/p&gt;
@@ -429,9 +429,9 @@ allow all;&lt;br&gt;
         <updated>2023-02-13T01:34:41.000Z</updated>
     </entry>
     <entry>
-        <id>https://durtime.github.io/blog/posts/0/</id>
+        <id>https://my.durtime.top/posts/0/</id>
         <title>Butterfly添加全局吸底Aplayer教程</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/0/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/0/"/>
         <content type="html">&lt;div class=&#34;note info flat&#34;&gt;&lt;p&gt;以下文章只是教程&lt;/p&gt;
 &lt;p&gt;如果部署之后，并没有出现 aplayer , 请确认是否跟足步骤操作或者更换音乐源，多试试。&lt;/p&gt;
 &lt;p&gt;如果遇到使用問題，请仔细查看插件文档，或者到插件那裏反饋。&lt;/p&gt;
@@ -570,9 +570,9 @@ allow all;&lt;br&gt;
         <updated>2022-07-31T11:02:28.000Z</updated>
     </entry>
     <entry>
-        <id>https://durtime.github.io/blog/posts/3c50d03d/</id>
+        <id>https://my.durtime.top/posts/3c50d03d/</id>
         <title>Markdown语法</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/3c50d03d/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/3c50d03d/"/>
         <content type="html">&lt;h1 id=&#34;简介&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h1&gt;
 &lt;p&gt;Markdown 是一种轻量级标记语言，它用简洁的语法代替排版，使我们专心于码字。它的目标是实现易读易写，成为一种适用于网络的书写语言。同时，Markdown 支持嵌入 html 标签。&lt;/p&gt;
 &lt;p&gt;&lt;u&gt;注意：Markdown 使用 #、+、* 等符号来标记， 符号后面必须跟上 至少 1 个 空格才有效！&lt;/u&gt;&lt;/p&gt;
@@ -807,9 +807,9 @@ setContentView(R.layout.activity_main);&lt;br&gt;
         <updated>2022-05-29T14:36:02.000Z</updated>
     </entry>
     <entry>
-        <id>https://durtime.github.io/blog/posts/55bce094/</id>
+        <id>https://my.durtime.top/posts/55bce094/</id>
         <title>Docker实用篇</title>
-        <link rel="alternate" href="https://durtime.github.io/blog/posts/55bce094/"/>
+        <link rel="alternate" href="https://my.durtime.top/posts/55bce094/"/>
         <content type="html">&lt;h1 id=&#34;docker实用篇&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#docker实用篇&#34;&gt;#&lt;/a&gt; Docker 实用篇&lt;/h1&gt;
 &lt;h1 id=&#34;0学习目标&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0学习目标&#34;&gt;#&lt;/a&gt; 0. 学习目标&lt;/h1&gt;
 &lt;h1 id=&#34;1初识docker&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1初识docker&#34;&gt;#&lt;/a&gt; 1. 初识 Docker&lt;/h1&gt;
